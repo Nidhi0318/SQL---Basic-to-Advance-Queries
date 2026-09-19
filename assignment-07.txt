@@ -1,0 +1,180 @@
+db.products.aggregate([
+  {$lookup:{
+    from:"orders",
+    let:{pid:"$productId"},
+    pipeline:[
+      {$match:{
+        status:"Delivered",
+        $expr:{
+          $in:["$$pid","$items.productId"]
+        }
+      }},
+      {$unwind:"$items"},
+      {$match:{
+        $expr:{
+          $eq:["$items.productId","$$pid"]
+        }
+      }},
+      {$group:{
+        _id:null,
+        quantitySold:{$sum:"$items.quantity"},
+        revenue:{$sum:{
+          $multiply:[
+            "$items.quantity",
+            "$items.unitPrice"
+          ]
+        }}
+      }}
+    ],
+    as:"sales"
+  }},
+
+  {$lookup:{
+    from:"reviews",
+    localField:"productId",
+    foreignField:"productId",
+    as:"reviews"
+  }},
+
+  {$set:{
+    quantitySold:{
+      $ifNull:[
+        {$arrayElemAt:["$sales.quantitySold",0]},
+        0
+      ]
+    },
+
+    revenue:{
+      $ifNull:[
+        {$arrayElemAt:["$sales.revenue",0]},
+        0
+      ]
+    },
+
+    averageRating:{$avg:"$reviews.rating"},
+
+    totalReviews:{$size:"$reviews"},
+
+    verifiedReviews:{
+      $size:{
+        $filter:{
+          input:"$reviews",
+          as:"review",
+          cond:"$$review.verifiedPurchase"
+        }
+      }
+    }
+  }},
+
+  {$project:{
+    _id:0,
+    productId:1,
+    productName:"$name",
+    category:1,
+    quantitySold:1,
+    revenue:1,
+    averageRating:{$round:["$averageRating",2]},
+    totalReviews:1,
+    verifiedReviews:1
+  }}
+])
+{
+  productId: 'P101',
+  category: 'Electronics',
+  quantitySold: 6,
+  revenue: 510000,
+  totalReviews: 2,
+  verifiedReviews: 2,
+  productName: 'Laptop Pro 15',
+  averageRating: 4.5
+}
+{
+  productId: 'P102',
+  category: 'Electronics',
+  quantitySold: 3,
+  revenue: 195000,
+  totalReviews: 1,
+  verifiedReviews: 1,
+  productName: 'Laptop Air 14',
+  averageRating: 4
+}
+{
+  productId: 'P103',
+  category: 'Electronics',
+  quantitySold: 3,
+  revenue: 135000,
+  totalReviews: 1,
+  verifiedReviews: 1,
+  productName: 'Smartphone X',
+  averageRating: 5
+}
+{
+  productId: 'P104',
+  category: 'Electronics',
+  quantitySold: 4,
+  revenue: 220000,
+  totalReviews: 1,
+  verifiedReviews: 1,
+  productName: 'Smartphone Pro',
+  averageRating: 4
+}
+{
+  productId: 'P105',
+  category: 'Electronics',
+  quantitySold: 7,
+  revenue: 84000,
+  totalReviews: 1,
+  verifiedReviews: 1,
+  productName: 'Wireless Headphones',
+  averageRating: 5
+}
+{
+  productId: 'P201',
+  category: 'Fashion',
+  quantitySold: 6,
+  revenue: 51000,
+  totalReviews: 1,
+  verifiedReviews: 1,
+  productName: 'Running Shoes',
+  averageRating: 4
+}
+{
+  productId: 'P202',
+  category: 'Fashion',
+  quantitySold: 6,
+  revenue: 27000,
+  totalReviews: 1,
+  verifiedReviews: 1,
+  productName: 'Formal Shoes',
+  averageRating: 3
+}
+{
+  productId: 'P203',
+  category: 'Electronics',
+  quantitySold: 5,
+  revenue: 175000,
+  totalReviews: 1,
+  verifiedReviews: 1,
+  productName: 'Smart Watch',
+  averageRating: 5
+}
+{
+  productId: 'P204',
+  category: 'Furniture',
+  quantitySold: 1,
+  revenue: 18000,
+  totalReviews: 1,
+  verifiedReviews: 1,
+  productName: 'Office Chair',
+  averageRating: 4
+}
+{
+  productId: 'P205',
+  category: 'Electronics',
+  quantitySold: 6,
+  revenue: 150000,
+  totalReviews: 1,
+  verifiedReviews: 1,
+  productName: 'Tablet Pro',
+  averageRating: 4
+}

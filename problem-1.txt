@@ -1,0 +1,193 @@
+use("day-02")
+switched to db day-02
+db.customers.insertMany([
+  {
+    customerId: "C101",
+    name: "Rahul Sharma",
+    city: "Hyderabad",
+    state: "Telangana",
+    age: 32,
+    segment: "Premium",
+    registeredDate: ISODate("2024-01-15")
+  },
+  {
+    customerId: "C102",
+    name: "Priya Patel",
+    city: "Mumbai",
+    state: "Maharashtra",
+    age: 28,
+    segment: "Regular",
+    registeredDate: ISODate("2024-02-10")
+  },
+  {
+    customerId: "C103",
+    name: "Amit Kumar",
+    city: "Bangalore",
+    state: "Karnataka",
+    age: 41,
+    segment: "Premium",
+    registeredDate: ISODate("2023-11-20")
+  },
+  {
+    customerId: "C104",
+    name: "Sneha Reddy",
+    city: "Hyderabad",
+    state: "Telangana",
+    age: 35,
+    segment: "Regular",
+    registeredDate: ISODate("2024-03-12")
+  },
+  {
+    customerId: "C105",
+    name: "Arjun Mehta",
+    city: "Delhi",
+    state: "Delhi",
+    age: 29,
+    segment: "Premium",
+    registeredDate: ISODate("2024-04-05")
+  }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a9ec73478b4a136794c3e03'),
+    '1': ObjectId('6a9ec73478b4a136794c3e04'),
+    '2': ObjectId('6a9ec73478b4a136794c3e05'),
+    '3': ObjectId('6a9ec73478b4a136794c3e06'),
+    '4': ObjectId('6a9ec73478b4a136794c3e07')
+  }
+}db.customers.find()
+{
+  _id: ObjectId('6a9ec73478b4a136794c3e03'),
+  customerId: 'C101',
+  name: 'Rahul Sharma',
+  city: 'Hyderabad',
+  state: 'Telangana',
+  age: 32,
+  segment: 'Premium',
+  registeredDate: ISODate('2024-01-15T00:00:00.000Z')
+}db.customers.find().sort({age: 1})
+{
+  _id: ObjectId('6a9ec73478b4a136794c3e04'),
+  customerId: 'C102',
+  name: 'Priya Patel',
+  city: 'Mumbai',
+  state: 'Maharashtra',
+  age: 28,
+  segment: 'Regular',
+  registeredDate: ISODate('2024-02-10T00:00:00.000Z')
+}
+db.customers.find().sort({age: -1})
+{
+  _id: ObjectId('6a9ec73478b4a136794c3e05'),
+  customerId: 'C103',
+  name: 'Amit Kumar',
+  city: 'Bangalore',
+  state: 'Karnataka',
+  age: 41,
+  segment: 'Premium',
+  registeredDate: ISODate('2023-11-20T00:00:00.000Z')
+}
+db.customers.find().sort({name: 1})
+{
+  _id: ObjectId('6a9ec73478b4a136794c3e05'),
+  customerId: 'C103',
+  name: 'Amit Kumar',
+  city: 'Bangalore',
+  state: 'Karnataka',
+  age: 41,
+  segment: 'Premium',
+  registeredDate: ISODate('2023-11-20T00:00:00.000Z')
+}
+db.customers.createIndex({city: 1})
+city_1
+db.customers.createIndex({age: 1})
+age_1
+db.customers.createIndex({age: 1})
+age_1
+db.customers.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { city: 1 }, name: 'city_1' },
+  { v: 2, key: { age: 1 }, name: 'age_1' }
+]
+db.customers.dropIndex({city: 1})
+{ nIndexesWas: 3, ok: 1 }
+db.customers.aggregate([
+  {
+    $group: {
+      _id: "$segment",
+      count: {$sum: 1}
+    }
+  }
+])
+
+{
+  _id: 'Premium',
+  count: 3
+}
+
+{
+  _id: 'Regular',
+  count: 2
+}
+db.customers.aggregate([
+  {
+    $group: {
+      _id: null,
+      averageAge: {$avg: "$age"}
+    }
+  }
+])
+{
+  _id: null,
+  averageAge: 33
+}
+
+db.customers.aggregate([
+  {
+    $group: {
+      _id: "$city",
+      totalCustomers: {$sum: 1}
+    }
+  }
+])
+
+  _id: 'Bangalore',
+  totalCustomers: 1
+}
+{
+  _id: 'Hyderabad',
+  totalCustomers: 2
+}
+
+{
+  _id: 'Mumbai',
+  totalCustomers: 1
+}
+{
+  _id: 'Delhi',
+  totalCustomers: 1
+}
+db.customers.aggregate([
+  {
+    $match: {
+      segment: "Premium"
+    }
+  },
+  {
+    $sort: {
+      age: -1
+    }
+  }
+])
+{
+  _id: ObjectId('6a9ec73478b4a136794c3e05'),
+  customerId: 'C103',
+  name: 'Amit Kumar',
+  city: 'Bangalore',
+  state: 'Karnataka',
+  age: 41,
+  segment: 'Premium',
+  registeredDate: ISODate('2023-11-20T00:00:00.000Z')
+}

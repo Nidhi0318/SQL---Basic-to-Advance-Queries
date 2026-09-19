@@ -1,0 +1,230 @@
+db.customers.aggregate([
+  {
+    $lookup: {
+      from: "orders",
+      localField: "customerId",
+      foreignField: "customerId",
+      as: "orders"
+    }
+  },
+
+  {
+    $unwind: "$orders"
+  },
+
+  {
+    $set: {
+      orderTotal: {
+        $sum: {
+          $map: {
+            input: "$orders.items",
+            as: "item",
+            in: {
+              $multiply: [
+                "$$item.quantity",
+                "$$item.unitPrice"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+
+  {
+    $group: {
+      _id: "$customerId",
+
+      customerName: { $first: "$name" },
+
+      membership: { $first: "$membership" },
+
+      totalOrders: { $sum: 1 },
+
+      totalProducts: {
+        $sum: {
+          $sum: "$orders.items.quantity"
+        }
+      },
+
+      totalSpending: {
+        $sum: "$orderTotal"
+      },
+
+      firstOrderDate: {
+        $min: "$orders.orderDate"
+      },
+
+      lastOrderDate: {
+        $max: "$orders.orderDate"
+      }
+    }
+  },
+
+  {
+    $set: {
+      averageOrderValue: {
+        $divide: [
+          "$totalSpending",
+          "$totalOrders"
+        ]
+      }
+    }
+  },
+
+  {
+    $set: {
+      customerSegment: {
+        $switch: {
+          branches: [
+            {
+              case: { $gte: ["$totalSpending", 500000] },
+              then: "Platinum"
+            },
+            {
+              case: { $gte: ["$totalSpending", 200000] },
+              then: "Gold"
+            },
+            {
+              case: { $gte: ["$totalSpending", 50000] },
+              then: "Silver"
+            }
+          ],
+          default: "Bronze"
+        }
+      }
+    }
+  },
+
+  {
+    $project: {
+      _id: 0,
+      customerId: "$_id",
+      customerName: 1,
+      membership: 1,
+      totalOrders: 1,
+      totalProducts: 1,
+      totalSpending: 1,
+      averageOrderValue: {
+        $round: ["$averageOrderValue", 2]
+      },
+      firstOrderDate: 1,
+      lastOrderDate: 1,
+      customerSegment: 1
+    }
+  },
+
+  {
+    $sort: {
+      totalSpending: -1
+    }
+  }
+])
+{
+  customerName: 'Rahul Sharma',
+  membership: 'Gold',
+  totalOrders: 2,
+  totalProducts: 6,
+  totalSpending: 290000,
+  firstOrderDate: ISODate('2026-01-15T00:00:00.000Z'),
+  lastOrderDate: ISODate('2026-06-15T00:00:00.000Z'),
+  customerSegment: 'Gold',
+  customerId: 'C101',
+  averageOrderValue: 145000
+}
+{
+  customerName: 'Ananya Rao',
+  membership: 'Gold',
+  totalOrders: 2,
+  totalProducts: 6,
+  totalSpending: 244000,
+  firstOrderDate: ISODate('2026-03-22T00:00:00.000Z'),
+  lastOrderDate: ISODate('2026-08-21T00:00:00.000Z'),
+  customerSegment: 'Gold',
+  customerId: 'C106',
+  averageOrderValue: 122000
+}
+{
+  customerName: 'Sneha Patel',
+  membership: 'Platinum',
+  totalOrders: 2,
+  totalProducts: 5,
+  totalSpending: 242000,
+  firstOrderDate: ISODate('2026-02-18T00:00:00.000Z'),
+  lastOrderDate: ISODate('2026-07-26T00:00:00.000Z'),
+  customerSegment: 'Gold',
+  customerId: 'C104',
+  averageOrderValue: 121000
+}
+{
+  customerName: 'Arjun Kumar',
+  membership: 'Gold',
+  totalOrders: 2,
+  totalProducts: 6,
+  totalSpending: 237000,
+  firstOrderDate: ISODate('2026-02-05T00:00:00.000Z'),
+  lastOrderDate: ISODate('2026-07-14T00:00:00.000Z'),
+  customerSegment: 'Gold',
+  customerId: 'C103',
+  averageOrderValue: 118500
+}
+{
+  customerName: 'Divya Menon',
+  membership: 'Platinum',
+  totalOrders: 2,
+  totalProducts: 6,
+  totalSpending: 224000,
+  firstOrderDate: ISODate('2026-05-28T00:00:00.000Z'),
+  lastOrderDate: ISODate('2026-09-05T00:00:00.000Z'),
+  customerSegment: 'Gold',
+  customerId: 'C110',
+  averageOrderValue: 112000
+}
+{
+  customerName: 'Meera Joshi',
+  membership: 'Gold',
+  totalOrders: 2,
+  totalProducts: 3,
+  totalSpending: 162000,
+  firstOrderDate: ISODate('2026-04-25T00:00:00.000Z'),
+  lastOrderDate: ISODate('2026-08-30T00:00:00.000Z'),
+  customerSegment: 'Silver',
+  customerId: 'C108',
+  averageOrderValue: 81000
+}
+{
+  customerName: 'Priya Reddy',
+  membership: 'Silver',
+  totalOrders: 2,
+  totalProducts: 4,
+  totalSpending: 157000,
+  firstOrderDate: ISODate('2026-01-20T00:00:00.000Z'),
+  lastOrderDate: ISODate('2026-06-30T00:00:00.000Z'),
+  customerSegment: 'Silver',
+  customerId: 'C102',
+  averageOrderValue: 78500
+}
+{
+  customerName: 'Rohan Gupta',
+  membership: 'Bronze',
+  totalOrders: 1,
+  totalProducts: 3,
+  totalSpending: 58500,
+  firstOrderDate: ISODate('2026-05-12T00:00:00.000Z'),
+  lastOrderDate: ISODate('2026-05-12T00:00:00.000Z'),
+  customerSegment: 'Silver',
+  customerId: 'C109',
+  averageOrderValue: 58500
+}
+{
+  customerName: 'Vikram Singh',
+  membership: 'Silver',
+  totalOrders: 2,
+  totalProducts: 7,
+  totalSpending: 43500,
+  firstOrderDate: ISODate('2026-03-10T00:00:00.000Z'),
+  lastOrderDate: ISODate('2026-08-05T00:00:00.000Z'),
+  customerSegment: 'Bronze',
+  customerId: 'C105',
+  averageOrderValue: 21750
+}

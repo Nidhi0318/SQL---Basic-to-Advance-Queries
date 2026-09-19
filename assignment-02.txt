@@ -1,0 +1,1174 @@
+db.orders.aggregate([
+  {$match:{status:"Delivered"}}
+])
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43df'),
+  orderId: 'ORD1001',
+  customerId: 'C101',
+  orderDate: ISODate('2026-01-15T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Hyderabad',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 2,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P205',
+      quantity: 1,
+      unitPrice: 25000,
+      discount: 10
+    }
+  ],
+  shippingCost: 500,
+  tax: 3060
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e0'),
+  orderId: 'ORD1002',
+  customerId: 'C102',
+  orderDate: ISODate('2026-01-20T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Bengaluru',
+  items: [
+    {
+      productId: 'P103',
+      quantity: 2,
+      unitPrice: 45000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 1,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 300,
+  tax: 4680
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e1'),
+  orderId: 'ORD1003',
+  customerId: 'C103',
+  orderDate: ISODate('2026-02-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Chennai',
+  items: [
+    {
+      productId: 'P102',
+      quantity: 1,
+      unitPrice: 65000,
+      discount: 5
+    },
+    {
+      productId: 'P201',
+      quantity: 2,
+      unitPrice: 8500,
+      discount: 10
+    }
+  ],
+  shippingCost: 400,
+  tax: 3870
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e2'),
+  orderId: 'ORD1004',
+  customerId: 'C104',
+  orderDate: ISODate('2026-02-18T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Mumbai',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P203',
+      quantity: 1,
+      unitPrice: 35000,
+      discount: 8
+    }
+  ],
+  shippingCost: 600,
+  tax: 7200
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e3'),
+  orderId: 'ORD1005',
+  customerId: 'C105',
+  orderDate: ISODate('2026-03-10T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Delhi',
+  items: [
+    {
+      productId: 'P201',
+      quantity: 2,
+      unitPrice: 8500,
+      discount: 5
+    },
+    {
+      productId: 'P202',
+      quantity: 1,
+      unitPrice: 4500,
+      discount: 10
+    }
+  ],
+  shippingCost: 250,
+  tax: 1840
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e4'),
+  orderId: 'ORD1006',
+  customerId: 'C106',
+  orderDate: ISODate('2026-03-22T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Pune',
+  items: [
+    {
+      productId: 'P104',
+      quantity: 2,
+      unitPrice: 55000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 2,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 450,
+  tax: 7200
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e5'),
+  orderId: 'ORD1007',
+  customerId: 'C107',
+  orderDate: ISODate('2026-04-08T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Kochi',
+  items: [
+    {
+      productId: 'P204',
+      quantity: 1,
+      unitPrice: 18000,
+      discount: 5
+    },
+    {
+      productId: 'P202',
+      quantity: 2,
+      unitPrice: 4500,
+      discount: 10
+    }
+  ],
+  shippingCost: 350,
+  tax: 2700
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e6'),
+  orderId: 'ORD1008',
+  customerId: 'C108',
+  orderDate: ISODate('2026-04-25T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Ahmedabad',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 1,
+      unitPrice: 12000,
+      discount: 5
+    }
+  ],
+  shippingCost: 500,
+  tax: 5100
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e7'),
+  orderId: 'ORD1009',
+  customerId: 'C109',
+  orderDate: ISODate('2026-05-12T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Jaipur',
+  items: [
+    {
+      productId: 'P205',
+      quantity: 2,
+      unitPrice: 25000,
+      discount: 10
+    },
+    {
+      productId: 'P201',
+      quantity: 1,
+      unitPrice: 8500,
+      discount: 5
+    }
+  ],
+  shippingCost: 300,
+  tax: 4500
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e8'),
+  orderId: 'ORD1010',
+  customerId: 'C110',
+  orderDate: ISODate('2026-05-28T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Bengaluru',
+  items: [
+    {
+      productId: 'P102',
+      quantity: 2,
+      unitPrice: 65000,
+      discount: 5
+    },
+    {
+      productId: 'P203',
+      quantity: 1,
+      unitPrice: 35000,
+      discount: 10
+    }
+  ],
+  shippingCost: 600,
+  tax: 10000
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e9'),
+  orderId: 'ORD1011',
+  customerId: 'C101',
+  orderDate: ISODate('2026-06-15T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Hyderabad',
+  items: [
+    {
+      productId: 'P103',
+      quantity: 1,
+      unitPrice: 45000,
+      discount: 5
+    },
+    {
+      productId: 'P205',
+      quantity: 2,
+      unitPrice: 25000,
+      discount: 10
+    }
+  ],
+  shippingCost: 400,
+  tax: 5850
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43eb'),
+  orderId: 'ORD1013',
+  customerId: 'C103',
+  orderDate: ISODate('2026-07-14T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Chennai',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P203',
+      quantity: 2,
+      unitPrice: 35000,
+      discount: 8
+    }
+  ],
+  shippingCost: 550,
+  tax: 8500
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43ec'),
+  orderId: 'ORD1014',
+  customerId: 'C104',
+  orderDate: ISODate('2026-07-26T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Mumbai',
+  items: [
+    {
+      productId: 'P104',
+      quantity: 2,
+      unitPrice: 55000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 1,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 500,
+  tax: 7500
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43ed'),
+  orderId: 'ORD1015',
+  customerId: 'C105',
+  orderDate: ISODate('2026-08-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Delhi',
+  items: [
+    {
+      productId: 'P202',
+      quantity: 3,
+      unitPrice: 4500,
+      discount: 5
+    },
+    {
+      productId: 'P201',
+      quantity: 1,
+      unitPrice: 8500,
+      discount: 10
+    }
+  ],
+  shippingCost: 250,
+  tax: 1800
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43ee'),
+  orderId: 'ORD1016',
+  customerId: 'C106',
+  orderDate: ISODate('2026-08-21T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Pune',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P205',
+      quantity: 1,
+      unitPrice: 25000,
+      discount: 10
+    }
+  ],
+  shippingCost: 450,
+  tax: 4950
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43f0'),
+  orderId: 'ORD1018',
+  customerId: 'C110',
+  orderDate: ISODate('2026-09-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Bengaluru',
+  items: [
+    {
+      productId: 'P203',
+      quantity: 1,
+      unitPrice: 35000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 2,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 400,
+  tax: 3900
+}
+db.orders.aggregate([
+  {$match:{status:"Delivered"}},
+  {$unwind:"$items"}
+])
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43df'),
+  orderId: 'ORD1001',
+  customerId: 'C101',
+  orderDate: ISODate('2026-01-15T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Hyderabad',
+  items: {
+    productId: 'P101',
+    quantity: 2,
+    unitPrice: 85000,
+    discount: 5
+  },
+  shippingCost: 500,
+  tax: 3060
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43df'),
+  orderId: 'ORD1001',
+  customerId: 'C101',
+  orderDate: ISODate('2026-01-15T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Hyderabad',
+  items: {
+    productId: 'P205',
+    quantity: 1,
+    unitPrice: 25000,
+    discount: 10
+  },
+  shippingCost: 500,
+  tax: 3060
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e0'),
+  orderId: 'ORD1002',
+  customerId: 'C102',
+  orderDate: ISODate('2026-01-20T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Bengaluru',
+  items: {
+    productId: 'P103',
+    quantity: 2,
+    unitPrice: 45000,
+    discount: 5
+  },
+  shippingCost: 300,
+  tax: 4680
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e0'),
+  orderId: 'ORD1002',
+  customerId: 'C102',
+  orderDate: ISODate('2026-01-20T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Bengaluru',
+  items: {
+    productId: 'P105',
+    quantity: 1,
+    unitPrice: 12000,
+    discount: 10
+  },
+  shippingCost: 300,
+  tax: 4680
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e1'),
+  orderId: 'ORD1003',
+  customerId: 'C103',
+  orderDate: ISODate('2026-02-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Chennai',
+  items: {
+    productId: 'P102',
+    quantity: 1,
+    unitPrice: 65000,
+    discount: 5
+  },
+  shippingCost: 400,
+  tax: 3870
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e1'),
+  orderId: 'ORD1003',
+  customerId: 'C103',
+  orderDate: ISODate('2026-02-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Chennai',
+  items: {
+    productId: 'P201',
+    quantity: 2,
+    unitPrice: 8500,
+    discount: 10
+  },
+  shippingCost: 400,
+  tax: 3870
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e2'),
+  orderId: 'ORD1004',
+  customerId: 'C104',
+  orderDate: ISODate('2026-02-18T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Mumbai',
+  items: {
+    productId: 'P101',
+    quantity: 1,
+    unitPrice: 85000,
+    discount: 5
+  },
+  shippingCost: 600,
+  tax: 7200
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e2'),
+  orderId: 'ORD1004',
+  customerId: 'C104',
+  orderDate: ISODate('2026-02-18T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Mumbai',
+  items: {
+    productId: 'P203',
+    quantity: 1,
+    unitPrice: 35000,
+    discount: 8
+  },
+  shippingCost: 600,
+  tax: 7200
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e3'),
+  orderId: 'ORD1005',
+  customerId: 'C105',
+  orderDate: ISODate('2026-03-10T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Delhi',
+  items: {
+    productId: 'P201',
+    quantity: 2,
+    unitPrice: 8500,
+    discount: 5
+  },
+  shippingCost: 250,
+  tax: 1840
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e3'),
+  orderId: 'ORD1005',
+  customerId: 'C105',
+  orderDate: ISODate('2026-03-10T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Delhi',
+  items: {
+    productId: 'P202',
+    quantity: 1,
+    unitPrice: 4500,
+    discount: 10
+  },
+  shippingCost: 250,
+  tax: 1840
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e4'),
+  orderId: 'ORD1006',
+  customerId: 'C106',
+  orderDate: ISODate('2026-03-22T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Pune',
+  items: {
+    productId: 'P104',
+    quantity: 2,
+    unitPrice: 55000,
+    discount: 5
+  },
+  shippingCost: 450,
+  tax: 7200
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e4'),
+  orderId: 'ORD1006',
+  customerId: 'C106',
+  orderDate: ISODate('2026-03-22T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Pune',
+  items: {
+    productId: 'P105',
+    quantity: 2,
+    unitPrice: 12000,
+    discount: 10
+  },
+  shippingCost: 450,
+  tax: 7200
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e5'),
+  orderId: 'ORD1007',
+  customerId: 'C107',
+  orderDate: ISODate('2026-04-08T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Kochi',
+  items: {
+    productId: 'P204',
+    quantity: 1,
+    unitPrice: 18000,
+    discount: 5
+  },
+  shippingCost: 350,
+  tax: 2700
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e5'),
+  orderId: 'ORD1007',
+  customerId: 'C107',
+  orderDate: ISODate('2026-04-08T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Kochi',
+  items: {
+    productId: 'P202',
+    quantity: 2,
+    unitPrice: 4500,
+    discount: 10
+  },
+  shippingCost: 350,
+  tax: 2700
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e6'),
+  orderId: 'ORD1008',
+  customerId: 'C108',
+  orderDate: ISODate('2026-04-25T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Ahmedabad',
+  items: {
+    productId: 'P101',
+    quantity: 1,
+    unitPrice: 85000,
+    discount: 5
+  },
+  shippingCost: 500,
+  tax: 5100
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e6'),
+  orderId: 'ORD1008',
+  customerId: 'C108',
+  orderDate: ISODate('2026-04-25T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Ahmedabad',
+  items: {
+    productId: 'P105',
+    quantity: 1,
+    unitPrice: 12000,
+    discount: 5
+  },
+  shippingCost: 500,
+  tax: 5100
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e7'),
+  orderId: 'ORD1009',
+  customerId: 'C109',
+  orderDate: ISODate('2026-05-12T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Jaipur',
+  items: {
+    productId: 'P205',
+    quantity: 2,
+    unitPrice: 25000,
+    discount: 10
+  },
+  shippingCost: 300,
+  tax: 4500
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e7'),
+  orderId: 'ORD1009',
+  customerId: 'C109',
+  orderDate: ISODate('2026-05-12T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Jaipur',
+  items: {
+    productId: 'P201',
+    quantity: 1,
+    unitPrice: 8500,
+    discount: 5
+  },
+  shippingCost: 300,
+  tax: 4500
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e8'),
+  orderId: 'ORD1010',
+  customerId: 'C110',
+  orderDate: ISODate('2026-05-28T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Bengaluru',
+  items: {
+    productId: 'P102',
+    quantity: 2,
+    unitPrice: 65000,
+    discount: 5
+  },
+  shippingCost: 600,
+  tax: 10000
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e8'),
+  orderId: 'ORD1010',
+  customerId: 'C110',
+  orderDate: ISODate('2026-05-28T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Bengaluru',
+  items: {
+    productId: 'P203',
+    quantity: 1,
+    unitPrice: 35000,
+    discount: 10
+  },
+  shippingCost: 600,
+  tax: 10000
+}
+Type "it" for more
+db.orders.aggregate([
+  {$match:{status:"Delivered"}},
+  {$unwind:"$items"},
+  {$group:{
+    _id:"$items.productId",
+    quantitySold:{$sum:"$items.quantity"},
+    revenue:{$sum:{$multiply:[
+      "$items.quantity",
+      "$items.unitPrice"
+    ]}}
+  }}
+])
+{
+  _id: 'P203',
+  quantitySold: 5,
+  revenue: 175000
+}
+{
+  _id: 'P103',
+  quantitySold: 3,
+  revenue: 135000
+}
+{
+  _id: 'P101',
+  quantitySold: 6,
+  revenue: 510000
+}
+{
+  _id: 'P205',
+  quantitySold: 6,
+  revenue: 150000
+}
+{
+  _id: 'P102',
+  quantitySold: 3,
+  revenue: 195000
+}
+{
+  _id: 'P201',
+  quantitySold: 6,
+  revenue: 51000
+}
+{
+  _id: 'P105',
+  quantitySold: 7,
+  revenue: 84000
+}
+{
+  _id: 'P104',
+  quantitySold: 4,
+  revenue: 220000
+}
+{
+  _id: 'P204',
+  quantitySold: 1,
+  revenue: 18000
+}
+{
+  _id: 'P202',
+  quantitySold: 6,
+  revenue: 27000
+}
+db.orders.aggregate([
+  {$match:{status:"Delivered"}},
+  {$unwind:"$items"},
+  {$group:{
+    _id:"$items.productId",
+    quantitySold:{$sum:"$items.quantity"},
+    revenue:{$sum:{$multiply:[
+      "$items.quantity",
+      "$items.unitPrice"
+    ]}}
+  }},
+  {$lookup:{
+    from:"products",
+    localField:"_id",
+    foreignField:"productId",
+    as:"product"
+  }},
+  {$unwind:"$product"}
+])
+{
+  _id: 'P202',
+  quantitySold: 6,
+  revenue: 27000,
+  product: {
+    _id: ObjectId('6aa00c4ca2fd521d5a75dc3b'),
+    productId: 'P202',
+    name: 'Formal Shoes',
+    category: 'Fashion',
+    subCategory: 'Footwear',
+    brand: 'Bata',
+    price: 4500,
+    costPrice: 2800,
+    stock: 90,
+    supplier: 'FashionHub'
+  }
+}
+{
+  _id: 'P105',
+  quantitySold: 7,
+  revenue: 84000,
+  product: {
+    _id: ObjectId('6aa00c4ca2fd521d5a75dc39'),
+    productId: 'P105',
+    name: 'Wireless Headphones',
+    category: 'Electronics',
+    subCategory: 'Accessories',
+    brand: 'Sony',
+    price: 12000,
+    costPrice: 7500,
+    stock: 150,
+    supplier: 'AudioWorld'
+  }
+}
+{
+  _id: 'P103',
+  quantitySold: 3,
+  revenue: 135000,
+  product: {
+    _id: ObjectId('6aa00c4ca2fd521d5a75dc37'),
+    productId: 'P103',
+    name: 'Smartphone X',
+    category: 'Electronics',
+    subCategory: 'Mobiles',
+    brand: 'Samsung',
+    price: 45000,
+    costPrice: 35000,
+    stock: 100,
+    supplier: 'MobileHub'
+  }
+}
+{
+  _id: 'P101',
+  quantitySold: 6,
+  revenue: 510000,
+  product: {
+    _id: ObjectId('6aa00c4ca2fd521d5a75dc35'),
+    productId: 'P101',
+    name: 'Laptop Pro 15',
+    category: 'Electronics',
+    subCategory: 'Laptops',
+    brand: 'Dell',
+    price: 85000,
+    costPrice: 70000,
+    stock: 45,
+    supplier: 'TechSupply'
+  }
+}
+{
+  _id: 'P205',
+  quantitySold: 6,
+  revenue: 150000,
+  product: {
+    _id: ObjectId('6aa00c4ca2fd521d5a75dc3e'),
+    productId: 'P205',
+    name: 'Tablet Pro',
+    category: 'Electronics',
+    subCategory: 'Tablets',
+    brand: 'Lenovo',
+    price: 25000,
+    costPrice: 19000,
+    stock: 65,
+    supplier: 'TechWorld'
+  }
+}
+{
+  _id: 'P201',
+  quantitySold: 6,
+  revenue: 51000,
+  product: {
+    _id: ObjectId('6aa00c4ca2fd521d5a75dc3a'),
+    productId: 'P201',
+    name: 'Running Shoes',
+    category: 'Fashion',
+    subCategory: 'Footwear',
+    brand: 'Nike',
+    price: 8500,
+    costPrice: 5000,
+    stock: 120,
+    supplier: 'SportsSupply'
+  }
+}
+{
+  _id: 'P203',
+  quantitySold: 5,
+  revenue: 175000,
+  product: {
+    _id: ObjectId('6aa00c4ca2fd521d5a75dc3c'),
+    productId: 'P203',
+    name: 'Smart Watch',
+    category: 'Electronics',
+    subCategory: 'Wearables',
+    brand: 'Apple',
+    price: 35000,
+    costPrice: 26000,
+    stock: 70,
+    supplier: 'TechSupply'
+  }
+}
+{
+  _id: 'P102',
+  quantitySold: 3,
+  revenue: 195000,
+  product: {
+    _id: ObjectId('6aa00c4ca2fd521d5a75dc36'),
+    productId: 'P102',
+    name: 'Laptop Air 14',
+    category: 'Electronics',
+    subCategory: 'Laptops',
+    brand: 'HP',
+    price: 65000,
+    costPrice: 52000,
+    stock: 60,
+    supplier: 'TechWorld'
+  }
+}
+{
+  _id: 'P104',
+  quantitySold: 4,
+  revenue: 220000,
+  product: {
+    _id: ObjectId('6aa00c4ca2fd521d5a75dc38'),
+    productId: 'P104',
+    name: 'Smartphone Pro',
+    category: 'Electronics',
+    subCategory: 'Mobiles',
+    brand: 'OnePlus',
+    price: 55000,
+    costPrice: 42000,
+    stock: 80,
+    supplier: 'MobileHub'
+  }
+}
+{
+  _id: 'P204',
+  quantitySold: 1,
+  revenue: 18000,
+  product: {
+    _id: ObjectId('6aa00c4ca2fd521d5a75dc3d'),
+    productId: 'P204',
+    name: 'Office Chair',
+    category: 'Furniture',
+    subCategory: 'Chairs',
+    brand: 'FeatherLite',
+    price: 18000,
+    costPrice: 12000,
+    stock: 40,
+    supplier: 'OfficeMart'
+  }
+}
+db.orders.aggregate([
+  {$match:{status:"Delivered"}},
+
+  {$unwind:"$items"},
+
+  {$group:{
+    _id:"$items.productId",
+    quantitySold:{$sum:"$items.quantity"},
+    revenue:{$sum:{$multiply:[
+      "$items.quantity",
+      "$items.unitPrice"
+    ]}}
+  }}
+])
+{
+  _id: 'P201',
+  quantitySold: 6,
+  revenue: 51000
+}
+{
+  _id: 'P205',
+  quantitySold: 6,
+  revenue: 150000
+}
+{
+  _id: 'P101',
+  quantitySold: 6,
+  revenue: 510000
+}
+{
+  _id: 'P103',
+  quantitySold: 3,
+  revenue: 135000
+}
+{
+  _id: 'P203',
+  quantitySold: 5,
+  revenue: 175000
+}
+{
+  _id: 'P102',
+  quantitySold: 3,
+  revenue: 195000
+}
+{
+  _id: 'P105',
+  quantitySold: 7,
+  revenue: 84000
+}
+{
+  _id: 'P104',
+  quantitySold: 4,
+  revenue: 220000
+}
+{
+  _id: 'P204',
+  quantitySold: 1,
+  revenue: 18000
+}
+{
+  _id: 'P202',
+  quantitySold: 6,
+  revenue: 27000
+}
+db.orders.aggregate([
+  {$project:{
+    _id:0,
+    productId:"$_id",
+    productName:"$product.name",
+    category:"$product.category",
+    quantitySold:1,
+    revenue:1,
+    totalCost:{$multiply:[
+      "$quantitySold",
+      "$product.costPrice"
+    ]},
+    profit:{$subtract:[
+      "$revenue",
+      {$multiply:[
+        "$quantitySold",
+        "$product.costPrice"
+      ]}
+    ]}
+  }}
+])
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43df'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43e0'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43e1'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43e2'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43e3'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43e4'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43e5'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43e6'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43e7'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43e8'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43e9'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43ea'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43eb'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43ec'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43ed'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43ee'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43ef'),
+  totalCost: null,
+  profit: null
+}
+{
+  productId: ObjectId('6aa00c67dcb12c3f9c5b43f0'),
+  totalCost: null,
+  profit: null
+}

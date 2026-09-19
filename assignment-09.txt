@@ -1,0 +1,189 @@
+db.orders.aggregate([
+  {$match:{status:"Delivered"}},
+
+  {$project:{
+    month:{$dateToString:{
+      format:"%Y-%m",
+      date:"$orderDate"
+    }},
+    customerId:1
+  }},
+
+  {$group:{
+    _id:"$month",
+    customers:{$addToSet:"$customerId"}
+  }}
+])
+{
+  _id: '2026-06',
+  customers: [
+    'C101'
+  ]
+}
+{
+  _id: '2026-02',
+  customers: [
+    'C103',
+    'C104'
+  ]
+}
+{
+  _id: '2026-01',
+  customers: [
+    'C102',
+    'C101'
+  ]
+}
+{
+  _id: '2026-03',
+  customers: [
+    'C106',
+    'C105'
+  ]
+}
+{
+  _id: '2026-07',
+  customers: [
+    'C103',
+    'C104'
+  ]
+}
+{
+  _id: '2026-05',
+  customers: [
+    'C110',
+    'C109'
+  ]
+}
+{
+  _id: '2026-04',
+  customers: [
+    'C108',
+    'C107'
+  ]
+}
+{
+  _id: '2026-09',
+  customers: [
+    'C110'
+  ]
+}
+{
+  _id: '2026-08',
+  customers: [
+    'C106',
+    'C105'
+  ]
+}
+db.orders.aggregate([
+  {$match:{status:"Delivered"}},
+
+  {$project:{
+    month:{$dateToString:{
+      format:"%Y-%m",
+      date:"$orderDate"
+    }},
+    customerId:1
+  }},
+
+  {$group:{
+    _id:"$month",
+    customers:{$addToSet:"$customerId"}
+  }},
+
+  {$project:{
+    month:"$_id",
+    activeCustomers:{$size:"$customers"}
+  }}
+])
+{
+  _id: '2026-06',
+  month: '2026-06',
+  activeCustomers: 1
+}
+{
+  _id: '2026-03',
+  month: '2026-03',
+  activeCustomers: 2
+}
+{
+  _id: '2026-01',
+  month: '2026-01',
+  activeCustomers: 2
+}
+{
+  _id: '2026-02',
+  month: '2026-02',
+  activeCustomers: 2
+}
+{
+  _id: '2026-05',
+  month: '2026-05',
+  activeCustomers: 2
+}
+{
+  _id: '2026-07',
+  month: '2026-07',
+  activeCustomers: 2
+}
+{
+  _id: '2026-04',
+  month: '2026-04',
+  activeCustomers: 2
+}
+{
+  _id: '2026-09',
+  month: '2026-09',
+  activeCustomers: 1
+}
+{
+  _id: '2026-08',
+  month: '2026-08',
+  activeCustomers: 2
+}
+
+db.orders.aggregate([
+  {$match:{status:"Delivered"}},
+
+  {$group:{
+    _id:"$customerId",
+    firstOrder:{$min:"$orderDate"}
+  }},
+
+  {$project:{
+    month:{$dateToString:{
+      format:"%Y-%m",
+      date:"$firstOrder"
+    }}
+  }},
+
+  {$group:{
+    _id:"$month",
+    newCustomers:{$sum:1}
+  }}
+])
+
+
+{
+  _id: '2026-04',
+  newCustomers: 2
+}
+{
+  _id: '2026-01',
+  newCustomers: 2
+}
+{
+  _id: '2026-02',
+  newCustomers: 2
+}
+{
+  _id: '2026-03',
+  newCustomers: 2
+}
+{
+  _id: '2026-05',
+  newCustomers: 2
+}
+
+
+

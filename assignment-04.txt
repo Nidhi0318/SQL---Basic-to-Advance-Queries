@@ -1,0 +1,98 @@
+db.orders.aggregate([
+  {$match:{status:"Delivered"}},
+
+  {$unwind:"$items"},
+
+  {$lookup:{
+    from:"products",
+    localField:"items.productId",
+    foreignField:"productId",
+    as:"product"
+  }},
+
+  {$unwind:"$product"},
+
+  {$group:{
+    _id:"$product.category",
+
+    products:{$addToSet:"$items.productId"},
+
+    quantitySold:{$sum:"$items.quantity"},
+
+    revenue:{$sum:{
+      $multiply:[
+        "$items.quantity",
+        "$items.unitPrice"
+      ]
+    }},
+
+    cost:{$sum:{
+      $multiply:[
+        "$items.quantity",
+        "$product.costPrice"
+      ]
+    }},
+
+    averageSellingPrice:{$avg:"$items.unitPrice"}
+  }},
+
+  {$project:{
+    _id:0,
+
+    category:"$_id",
+
+    uniqueProducts:{$size:"$products"},
+
+    quantitySold:1,
+
+    revenue:{$round:["$revenue",2]},
+
+    averageSellingPrice:{
+      $round:["$averageSellingPrice",2]
+    },
+
+    profit:{
+      $round:[
+        {$subtract:["$revenue","$cost"]},
+        2
+      ]
+    },
+
+    profitMargin:{
+      $round:[
+        {
+          $multiply:[
+            {
+              $divide:[
+                {$subtract:["$revenue","$cost"]},
+                "$revenue"
+              ]
+            },
+            100
+          ]
+        },
+        2
+      ]
+    }
+  }},
+
+  {$sort:{profit:-1}}
+])
+{
+  quantitySold: 34,
+  category: 'Electronics',
+  uniqueProducts: 7,
+  revenue: 1469000,
+  averageSellingPrice: 43958.33,
+  profit: 323500,
+  profitMargin: 22.02
+}
+{
+  quantitySold: 12,
+  category: 'Fashion',
+  uniqueProducts: 2,
+  revenue: 78000,
+  averageSellingPrice: 6785.71,
+  profit: 31200,
+  profitMargin: 40
+}

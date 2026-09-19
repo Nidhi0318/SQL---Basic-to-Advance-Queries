@@ -1,0 +1,188 @@
+db.orders.aggregate([
+  {$group:{
+    _id:null,
+    totalOrders:{$sum:1},
+    totalQuantity:{$sum:{$sum:"$items.quantity"}},
+    totalRevenue:{$sum:{
+      $sum:{
+        $map:{
+          input:"$items",
+          as:"item",
+          in:{$multiply:[
+            "$$item.quantity",
+            "$$item.unitPrice"
+          ]}
+        }
+      }
+    }}
+  }},
+
+  {$project:{
+    _id:0,
+    totalOrders:1,
+    totalQuantity:1,
+    totalRevenue:1,
+    averageOrderValue:{
+      $divide:["$totalRevenue","$totalOrders"]
+    }
+  }}
+])
+{
+  totalOrders: 18,
+  totalQuantity: 49,
+  totalRevenue: 1685000,
+  averageOrderValue: 93611.11111111111
+}
+db.customers.aggregate([
+  {$lookup:{
+    from:"orders",
+    localField:"customerId",
+    foreignField:"customerId",
+    as:"orders"
+  }},
+
+  {$project:{
+    customerId:1,
+    orderCount:{$size:"$orders"}
+  }},
+
+  {$group:{
+    _id:null,
+    totalCustomers:{$sum:1},
+    activeCustomers:{
+      $sum:{$cond:[
+        {$gt:["$orderCount",0]},1,0
+      ]}
+    },
+    repeatCustomers:{
+      $sum:{$cond:[
+        {$gte:["$orderCount",2]},1,0
+      ]}
+    }
+  }}
+])
+{
+  _id: null,
+  totalCustomers: 10,
+  activeCustomers: 10,
+  repeatCustomers: 8
+}
+db.orders.aggregate([
+  {$group:{
+    _id:null,
+
+    delivered:{
+      $sum:{$cond:[
+        {$eq:["$status","Delivered"]},1,0
+      ]}
+    },
+
+    cancelled:{
+      $sum:{$cond:[
+        {$eq:["$status","Cancelled"]},1,0
+      ]}
+    },
+
+    pending:{
+      $sum:{$cond:[
+        {$eq:["$status","Pending"]},1,0
+      ]}
+    },
+
+    totalOrders:{$sum:1}
+  }},
+
+  {$project:{
+    _id:0,
+    delivered:1,
+    cancelled:1,
+    pending:1,
+
+    cancellationRate:{
+      $multiply:[
+        {$divide:["$cancelled","$totalOrders"]},
+        100
+      ]
+    }
+  }}
+])
+{
+  delivered: 16,
+  cancelled: 1,
+  pending: 0,
+  cancellationRate: 5.555555555555555
+}
+
+{
+  delivered: 16,
+  cancelled: 1,
+  pending: 0,
+  cancellationRate: 5.555555555555555
+}
+
+db.orders.aggregate([
+  {$match:{status:"Delivered"}},
+  {$unwind:"$items"},
+
+  {$group:{
+    _id:"$items.productId",
+    quantitySold:{$sum:"$items.quantity"}
+  }},
+
+  {$sort:{quantitySold:-1}},
+  {$limit:1}
+])
+{
+  _id: 'P105',
+  quantitySold: 7
+}
+
+{
+  _id: 'P105',
+  quantitySold: 7
+}
+
+
+db.reviews.aggregate([
+  {$group:{
+    _id:null,
+
+    averageRating:{$avg:"$rating"},
+
+    totalReviews:{$sum:1},
+
+    verifiedReviews:{
+      $sum:{$cond:[
+        "$verifiedPurchase",1,0
+      ]}
+    },
+
+    lowRatedReviews:{
+      $sum:{$cond:[
+        {$lt:["$rating",3]},1,0
+      ]}
+    }
+  }},
+
+  {$project:{
+    _id:0,
+    averageRating:{$round:["$averageRating",2]},
+    totalReviews:1,
+    verifiedReviews:1,
+    lowRatedReviews:1
+  }}
+])
+{
+  totalReviews: 11,
+  verifiedReviews: 11,
+  lowRatedReviews: 0,
+  averageRating: 4.27
+}
+{
+  totalReviews: 11,
+  verifiedReviews: 11,
+  lowRatedReviews: 0,
+  averageRating: 4.27
+}
+
+

@@ -1,0 +1,109 @@
+use ecommerceDB
+
+db.customers.aggregate([
+  {$lookup:{
+    from:"orders",
+    localField:"customerId",
+    foreignField:"customerId",
+    as:"orders"
+  }},
+  {$unwind:"$orders"},
+
+  {$group:{
+    _id:"$customerId",
+    customerName:{$first:"$name"},
+    totalOrders:{$sum:1},
+    totalQuantity:{$sum:{$sum:"$orders.items.quantity"}},
+    totalSpending:{$sum:{
+      $sum:{
+        $map:{
+          input:"$orders.items",
+          as:"item",
+          in:{$multiply:["$$item.quantity","$$item.unitPrice"]}
+        }
+      }
+    }},
+    mostExpensiveOrder:{$max:{
+      $sum:{
+        $map:{
+          input:"$orders.items",
+          as:"item",
+          in:{$multiply:["$$item.quantity","$$item.unitPrice"]}
+        }
+      }
+    }},
+    minimumOrder:{$min:{
+      $sum:{
+        $map:{
+          input:"$orders.items",
+          as:"item",
+          in:{$multiply:["$$item.quantity","$$item.unitPrice"]}
+        }
+      }
+    }},
+    cancelledOrders:{$sum:{$cond:[
+      {$eq:["$orders.status","Cancelled"]},1,0
+    ]}},
+    deliveredOrders:{$sum:{$cond:[
+      {$eq:["$orders.status","Delivered"]},1,0
+    ]}}
+  }},
+
+  {$set:{
+    averageOrderValue:{
+      $divide:["$totalSpending","$totalOrders"]
+    },
+
+    customerType:{
+      $switch:{
+        branches:[
+          {case:{$gte:["$totalOrders",20]},then:"Frequent Buyer"},
+          {case:{$gte:["$totalOrders",10]},then:"Regular Buyer"},
+          {case:{$gte:["$totalOrders",5]},then:"Occasional Buyer"}
+        ],
+        default:"Rare Buyer"
+      }
+    }
+  }},
+
+  {$project:{
+    _id:0,
+    customerId:"$_id",
+    customerName:1,
+    totalOrders:1,
+    totalQuantity:1,
+    totalSpending:1,
+    averageOrderValue:{$round:["$averageOrderValue",2]},
+    mostExpensiveOrder:1,
+    minimumOrder:1,
+    cancelledOrders:1,
+    deliveredOrders:1,
+    customerType:1
+  }}
+])
+{
+  customerName: 'Ananya Rao',
+  totalOrders: 2,
+  totalQuantity: 6,
+  totalSpending: 244000,
+  mostExpensiveOrder: 134000,
+  minimumOrder: 110000,
+  cancelledOrders: 0,
+  deliveredOrders: 2,
+  customerType: 'Rare Buyer',
+  customerId: 'C106',
+  averageOrderValue: 122000
+}
+{
+  customerName: 'Karthik Nair',
+  totalOrders: 1,
+  totalQuantity: 3,
+  totalSpending: 27000,
+  mostExpensiveOrder: 27000,
+  minimumOrder: 27000,
+  cancelledOrders: 0,
+  deliveredOrders: 1,
+  customerType: 'Rare Buyer',
+  customerId: 'C107',
+  averageOrderValue: 27000
+}

@@ -1,0 +1,47 @@
+db.orders.find(
+  {},
+  {
+    _id: 0,
+    orderId: 1,
+    customerId: 1,
+    amount: 1,
+    status: 1,
+    orderDate: 1
+  }
+).sort({ orderDate: -1 }).limit(5)
+{
+  orderId: 'O1008',
+  customerId: 'C103',
+  amount: 75000,
+  status: 'Delivered',
+  orderDate: ISODate('2024-05-18T00:00:00.000Z')
+}
+{
+  orderId: 'O1007',
+  customerId: 'C102',
+  amount: 12000,
+  status: 'Pending',
+  orderDate: ISODate('2024-05-15T00:00:00.000Z')
+}
+{
+  orderId: 'O1006',
+  customerId: 'C101',
+  amount: 70000,
+  status: 'Delivered',
+  orderDate: ISODate('2024-05-12T00:00:00.000Z')
+}
+{
+  orderId: 'O1005',
+  customerId: 'C105',
+  amount: 54000,
+  status: 'Delivered',
+  orderDate: ISODate('2024-05-10T00:00:00.000Z')
+}
+{
+  orderId: 'O1004',
+  customerId: 'C104',
+  amount: 24000,
+  status: 'Delivered',
+  orderDate: ISODate('2024-05-07T00:00:00.000Z')
+}
+

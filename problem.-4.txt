@@ -1,0 +1,72 @@
+db.orders.createIndex({
+    customerId: 1,
+    status: 1
+})
+
+db.orders.find({
+    customerId: "C101"
+})
+
+db.orders.find({
+    customerId: "C101"
+}).explain("executionStats")
+{
+          status: 1
+        },
+        indexName: 'customerId_1_status_1',
+        isMultiKey: false,
+        multiKeyPaths: {
+          customerId: [],
+          status: []
+        },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: {
+          customerId: [
+            '["C101", "C101"]'
+          ],
+          status: [
+            '[MinKey, MaxKey]'
+          ]
+        },
+        keysExamined: 0,
+        seeks: 1,
+        dupsTested: 0,
+        dupsDropped: 0
+      }
+    }
+  },
+  queryShapeHash: 'C7F56C9DB47D200394087387C0FCEC84063AC9F2B2104B8B65FD89F9BE174757',
+  command: {
+    find: 'orders',
+    filter: {
+      customerId: 'C101'
+    },
+    '$db': 'ecommerceDB'
+  },
+  serverInfo: {
+    host: 'Nidhi',
+    port: 27017,
+    version: '8.2.1',
+    gitVersion: '3312bdcf28aa65f5930005e21c2cb130f648b8c3'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+ecommerceDB
+
+

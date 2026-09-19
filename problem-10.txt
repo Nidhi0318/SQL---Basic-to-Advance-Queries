@@ -1,0 +1,35 @@
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$customerId",
+      totalOrders: { $sum: 1 },
+      totalAmountSpent: { $sum: "$amount" }
+    }
+  },
+  {
+    $match: {
+      totalAmountSpent: { $gt: 50000 }
+    }
+  },
+  {
+    $sort: {
+      totalAmountSpent: -1
+    }
+  }
+])
+
+{
+  _id: 'C101',
+  totalOrders: 2,
+  totalAmountSpent: 145000
+}
+{
+  _id: 'C103',
+  totalOrders: 2,
+  totalAmountSpent: 110000
+}
+{
+  _id: 'C105',
+  totalOrders: 1,
+  totalAmountSpent: 54000
+}

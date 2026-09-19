@@ -1,0 +1,517 @@
+use("day-02")
+switched to db day-02
+db.orders.insertMany([
+  {
+    orderId: "O1001",
+    customerId: "C101",
+    productId: "P101",
+    category: "Electronics",
+    quantity: 1,
+    amount: 75000,
+    status: "Delivered",
+    paymentMethod: "Credit Card",
+    orderDate: ISODate("2024-05-01")
+  },
+  {
+    orderId: "O1002",
+    customerId: "C102",
+    productId: "P103",
+    category: "Accessories",
+    quantity: 2,
+    amount: 10000,
+    status: "Delivered",
+    paymentMethod: "UPI",
+    orderDate: ISODate("2024-05-03")
+  },
+  {
+    orderId: "O1003",
+    customerId: "C103",
+    productId: "P102",
+    category: "Electronics",
+    quantity: 1,
+    amount: 35000,
+    status: "Cancelled",
+    paymentMethod: "Debit Card",
+    orderDate: ISODate("2024-05-05")
+  },
+  {
+    orderId: "O1004",
+    customerId: "C104",
+    productId: "P104",
+    category: "Furniture",
+    quantity: 2,
+    amount: 24000,
+    status: "Delivered",
+    paymentMethod: "UPI",
+    orderDate: ISODate("2024-05-07")
+  },
+  {
+    orderId: "O1005",
+    customerId: "C105",
+    productId: "P105",
+    category: "Electronics",
+    quantity: 3,
+    amount: 54000,
+    status: "Delivered",
+    paymentMethod: "Credit Card",
+    orderDate: ISODate("2024-05-10")
+  },
+  {
+    orderId: "O1006",
+    customerId: "C101",
+    productId: "P102",
+    category: "Electronics",
+    quantity: 2,
+    amount: 70000,
+    status: "Delivered",
+    paymentMethod: "UPI",
+    orderDate: ISODate("2024-05-12")
+  },
+  {
+    orderId: "O1007",
+    customerId: "C102",
+    productId: "P104",
+    category: "Furniture",
+    quantity: 1,
+    amount: 12000,
+    status: "Pending",
+    paymentMethod: "Credit Card",
+    orderDate: ISODate("2024-05-15")
+  },
+  {
+    orderId: "O1008",
+    customerId: "C103",
+    productId: "P101",
+    category: "Electronics",
+    quantity: 1,
+    amount: 75000,
+    status: "Delivered",
+    paymentMethod: "UPI",
+    orderDate: ISODate("2024-05-18")
+  }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a9ed0cdff3aee29535f3e80'),
+    '1': ObjectId('6a9ed0cdff3aee29535f3e81'),
+    '2': ObjectId('6a9ed0cdff3aee29535f3e82'),
+    '3': ObjectId('6a9ed0cdff3aee29535f3e83'),
+    '4': ObjectId('6a9ed0cdff3aee29535f3e84'),
+    '5': ObjectId('6a9ed0cdff3aee29535f3e85'),
+    '6': ObjectId('6a9ed0cdff3aee29535f3e86'),
+    '7': ObjectId('6a9ed0cdff3aee29535f3e87')
+  }
+}
+db.orders.find().pretty()
+{
+  _id: ObjectId('6a9ed0cdff3aee29535f3e80'),
+  orderId: 'O1001',
+  customerId: 'C101',
+  productId: 'P101',
+  category: 'Electronics',
+  quantity: 1,
+  amount: 75000,
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  orderDate: ISODate('2024-05-01T00:00:00.000Z')
+}
+{
+  _id: ObjectId('6a9ed0cdff3aee29535f3e81'),
+  orderId: 'O1002',
+  customerId: 'C102',
+  productId: 'P103',
+  category: 'Accessories',
+  quantity: 2,
+  amount: 10000,
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  orderDate: ISODate('2024-05-03T00:00:00.000Z')
+}
+{
+  _id: ObjectId('6a9ed0cdff3aee29535f3e82'),
+  orderId: 'O1003',
+  customerId: 'C103',
+  productId: 'P102',
+  category: 'Electronics',
+  quantity: 1,
+  amount: 35000,
+  status: 'Cancelled',
+  paymentMethod: 'Debit Card',
+  orderDate: ISODate('2024-05-05T00:00:00.000Z')
+}
+{
+  _id: ObjectId('6a9ed0cdff3aee29535f3e83'),
+  orderId: 'O1004',
+  customerId: 'C104',
+  productId: 'P104',
+  category: 'Furniture',
+  quantity: 2,
+  amount: 24000,
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  orderDate: ISODate('2024-05-07T00:00:00.000Z')
+}
+{
+  _id: ObjectId('6a9ed0cdff3aee29535f3e84'),
+  orderId: 'O1005',
+  customerId: 'C105',
+  productId: 'P105',
+  category: 'Electronics',
+  quantity: 3,
+  amount: 54000,
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  orderDate: ISODate('2024-05-10T00:00:00.000Z')
+}
+{
+  _id: ObjectId('6a9ed0cdff3aee29535f3e85'),
+  orderId: 'O1006',
+  customerId: 'C101',
+  productId: 'P102',
+  category: 'Electronics',
+  quantity: 2,
+  amount: 70000,
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  orderDate: ISODate('2024-05-12T00:00:00.000Z')
+}
+{
+  _id: ObjectId('6a9ed0cdff3aee29535f3e86'),
+  orderId: 'O1007',
+  customerId: 'C102',
+  productId: 'P104',
+  category: 'Furniture',
+  quantity: 1,
+  amount: 12000,
+  status: 'Pending',
+  paymentMethod: 'Credit Card',
+  orderDate: ISODate('2024-05-15T00:00:00.000Z')
+}
+{
+  _id: ObjectId('6a9ed0cdff3aee29535f3e87'),
+  orderId: 'O1008',
+  customerId: 'C103',
+  productId: 'P101',
+  category: 'Electronics',
+  quantity: 1,
+  amount: 75000,
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  orderDate: ISODate('2024-05-18T00:00:00.000Z')
+}
+db.orders.countDocuments()
+8
+db.customers.createIndex({ city: 1 })
+city_1
+db.customers.find({ city: "Hyderabad" })
+{
+  _id: ObjectId('6a9ec73478b4a136794c3e03'),
+  customerId: 'C101',
+  name: 'Rahul Sharma',
+  city: 'Hyderabad',
+  state: 'Telangana',
+  age: 32,
+  segment: 'Premium',
+  registeredDate: ISODate('2024-01-15T00:00:00.000Z')
+}
+{
+  _id: ObjectId('6a9ec73478b4a136794c3e06'),
+  customerId: 'C104',
+  name: 'Sneha Reddy',
+  city: 'Hyderabad',
+  state: 'Telangana',
+  age: 35,
+  segment: 'Regular',
+  registeredDate: ISODate('2024-03-12T00:00:00.000Z')
+}
+db.customers.find({ city: "Hyderabad" }).explain("executionStats")
+{
+        stage: 'IXSCAN',
+        nReturned: 2,
+        executionTimeMillisEstimate: 3,
+        works: 3,
+        advanced: 2,
+        needTime: 0,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        keyPattern: {
+          city: 1
+        },
+        indexName: 'city_1',
+        isMultiKey: false,
+        multiKeyPaths: {
+          city: []
+        },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: {
+          city: [
+            '["Hyderabad", "Hyderabad"]'
+          ]
+        },
+        keysExamined: 2,
+        seeks: 1,
+        dupsTested: 0,
+        dupsDropped: 0
+      }
+    }
+  },
+  queryShapeHash: '15172FAFB4EE04081023335CBB70CEFB3A3E6FAFC04C70BA8E2D09ED386EDEBA',
+  command: {
+    find: 'customers',
+    filter: {
+      city: 'Hyderabad'
+    },
+    '$db': 'day-02'
+  },
+  serverInfo: {
+    host: 'Nidhi',
+    port: 27017,
+    version: '8.2.1',
+    gitVersion: '3312bdcf28aa65f5930005e21c2cb130f648b8c3'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+db.customers.dropIndex({ city: 1 })
+{ nIndexesWas: 3, ok: 1 }
+db.products.find(
+  {},
+  { _id: 0, name: 1, category: 1, price: 1 }
+).sort({ price: 1 })
+{
+  name: 'Headphones',
+  category: 'Accessories',
+  price: 5000
+}
+{
+  name: 'Office Chair',
+  category: 'Furniture',
+  price: 12000
+}
+{
+  name: 'Monitor',
+  category: 'Electronics',
+  price: 18000
+}
+{
+  name: 'Smartphone',
+  category: 'Electronics',
+  price: 35000
+}
+{
+  name: 'Laptop',
+  category: 'Electronics',
+  price: 75000
+}
+db.products.find(
+  {},
+  { _id: 0, name: 1, category: 1, price: 1 }
+).sort({ price: -1 })
+{
+  name: 'Laptop',
+  category: 'Electronics',
+  price: 75000
+}
+{
+  name: 'Smartphone',
+  category: 'Electronics',
+  price: 35000
+}
+{
+  name: 'Monitor',
+  category: 'Electronics',
+  price: 18000
+}
+{
+  name: 'Office Chair',
+  category: 'Furniture',
+  price: 12000
+}
+{
+  name: 'Headphones',
+  category: 'Accessories',
+  price: 5000
+}
+db.customers.createIndex({ age: 1 })
+age_1
+db.customers.find({ age: { $gt: 30 } })
+{
+  _id: ObjectId('6a9ec73478b4a136794c3e03'),
+  customerId: 'C101',
+  name: 'Rahul Sharma',
+  city: 'Hyderabad',
+  state: 'Telangana',
+  age: 32,
+  segment: 'Premium',
+  registeredDate: ISODate('2024-01-15T00:00:00.000Z')
+}
+{
+  _id: ObjectId('6a9ec73478b4a136794c3e06'),
+  customerId: 'C104',
+  name: 'Sneha Reddy',
+  city: 'Hyderabad',
+  state: 'Telangana',
+  age: 35,
+  segment: 'Regular',
+  registeredDate: ISODate('2024-03-12T00:00:00.000Z')
+}
+{
+  _id: ObjectId('6a9ec73478b4a136794c3e05'),
+  customerId: 'C103',
+  name: 'Amit Kumar',
+  city: 'Bangalore',
+  state: 'Karnataka',
+  age: 41,
+  segment: 'Premium',
+  registeredDate: ISODate('2023-11-20T00:00:00.000Z')
+}
+db.customers.find({ age: { $gt: 30 } }).explain("executionStats")
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'day-02.customers',
+    parsedQuery: {
+      age: {
+        '$gt': 30
+      }
+    },
+    indexFilterSet: false,
+    queryHash: '6ADA4B96',
+    planCacheShapeHash: '6ADA4B96',
+    planCacheKey: '22477281',
+    optimizationTimeMillis: 0,
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    prunedSimilarIndexes: false,
+    winningPlan: {
+      isCached: false,
+      stage: 'FETCH',
+      inputStage: {
+        stage: 'IXSCAN',
+        keyPattern: {
+          age: 1
+        },
+        indexName: 'age_1',
+        isMultiKey: false,
+        multiKeyPaths: {
+          age: []
+        },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: {
+          age: [
+            '(30, inf]'
+          ]
+        }
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 3,
+    executionTimeMillis: 0,
+    totalKeysExamined: 3,
+    totalDocsExamined: 3,
+    executionStages: {
+      isCached: false,
+      stage: 'FETCH',
+      nReturned: 3,
+      executionTimeMillisEstimate: 0,
+      works: 4,
+      advanced: 3,
+      needTime: 0,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      docsExamined: 3,
+      alreadyHasObj: 0,
+      inputStage: {
+        stage: 'IXSCAN',
+        nReturned: 3,
+        executionTimeMillisEstimate: 0,
+        works: 4,
+        advanced: 3,
+        needTime: 0,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        keyPattern: {
+          age: 1
+        },
+        indexName: 'age_1',
+        isMultiKey: false,
+        multiKeyPaths: {
+          age: []
+        },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: {
+          age: [
+            '(30, inf]'
+          ]
+        },
+        keysExamined: 3,
+        seeks: 1,
+        dupsTested: 0,
+        dupsDropped: 0
+      }
+    }
+  },
+  queryShapeHash: '026A3CEDBD95F015C89A8BF8D5D39637DB72B3EF58E262DB1ECC9F65687C754E',
+  command: {
+    find: 'customers',
+    filter: {
+      age: {
+        '$gt': 30
+      }
+    },
+    '$db': 'day-02'
+  },
+  serverInfo: {
+    host: 'Nidhi',
+    port: 27017,
+    version: '8.2.1',
+    gitVersion: '3312bdcf28aa65f5930005e21c2cb130f648b8c3'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}

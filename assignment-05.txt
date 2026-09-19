@@ -1,0 +1,189 @@
+db.customers.aggregate([
+  {$lookup:{
+    from:"orders",
+    localField:"customerId",
+    foreignField:"customerId",
+    as:"orders"
+  }},
+
+  {$unwind:"$orders"},
+
+  {$match:{
+    "orders.status":"Delivered"
+  }},
+
+  {$set:{
+    orderTotal:{
+      $sum:{
+        $map:{
+          input:"$orders.items",
+          as:"item",
+          in:{
+            $multiply:[
+              "$$item.quantity",
+              "$$item.unitPrice"
+            ]
+          }
+        }
+      }
+    }
+  }},
+
+  {$group:{
+    _id:{
+      state:"$state",
+      city:"$city"
+    },
+
+    customers:{$addToSet:"$customerId"},
+
+    orders:{$sum:1},
+
+    totalSales:{$sum:"$orderTotal"},
+
+    quantitySold:{$sum:{
+      $sum:"$orders.items.quantity"
+    }}
+  }},
+
+  {$group:{
+    _id:null,
+
+    regions:{$push:"$$ROOT"},
+
+    companySales:{$sum:"$totalSales"}
+  }},
+
+  {$unwind:"$regions"},
+
+  {$project:{
+    _id:0,
+
+    state:"$regions._id.state",
+
+    city:"$regions._id.city",
+
+    customers:{$size:"$regions.customers"},
+
+    orders:"$regions.orders",
+
+    totalSales:"$regions.totalSales",
+
+    averageOrderValue:{
+      $divide:[
+        "$regions.totalSales",
+        "$regions.orders"
+      ]
+    },
+
+    quantitySold:"$regions.quantitySold",
+
+    salesContribution:{
+      $multiply:[
+        {
+          $divide:[
+            "$regions.totalSales",
+            "$companySales"
+          ]
+        },
+        100
+      ]
+    }
+  }},
+
+  {$sort:{
+    totalSales:-1
+  }}
+])
+{
+  state: 'Karnataka',
+  city: 'Bengaluru',
+  customers: 2,
+  orders: 3,
+  totalSales: 326000,
+  averageOrderValue: 108666.66666666667,
+  quantitySold: 9,
+  salesContribution: 20.830670926517573
+}
+{
+  state: 'Telangana',
+  city: 'Hyderabad',
+  customers: 1,
+  orders: 2,
+  totalSales: 290000,
+  averageOrderValue: 145000,
+  quantitySold: 6,
+  salesContribution: 18.53035143769968
+}
+{
+  state: 'Maharashtra',
+  city: 'Pune',
+  customers: 1,
+  orders: 2,
+  totalSales: 244000,
+  averageOrderValue: 122000,
+  quantitySold: 6,
+  salesContribution: 15.591054313099043
+}
+{
+  state: 'Maharashtra',
+  city: 'Mumbai',
+  customers: 1,
+  orders: 2,
+  totalSales: 242000,
+  averageOrderValue: 121000,
+  quantitySold: 5,
+  salesContribution: 15.463258785942491
+}
+{
+  state: 'Tamil Nadu',
+  city: 'Chennai',
+  customers: 1,
+  orders: 2,
+  totalSales: 237000,
+  averageOrderValue: 118500,
+  quantitySold: 6,
+  salesContribution: 15.143769968051119
+}
+{
+  state: 'Gujarat',
+  city: 'Ahmedabad',
+  customers: 1,
+  orders: 1,
+  totalSales: 97000,
+  averageOrderValue: 97000,
+  quantitySold: 2,
+  salesContribution: 6.198083067092652
+}
+{
+  state: 'Rajasthan',
+  city: 'Jaipur',
+  customers: 1,
+  orders: 1,
+  totalSales: 58500,
+  averageOrderValue: 58500,
+  quantitySold: 3,
+  salesContribution: 3.738019169329074
+}
+{
+  state: 'Delhi',
+  city: 'Delhi',
+  customers: 1,
+  orders: 2,
+  totalSales: 43500,
+  averageOrderValue: 21750,
+  quantitySold: 7,
+  salesContribution: 2.779552715654952
+}
+{
+  state: 'Kerala',
+  city: 'Kochi',
+  customers: 1,
+  orders: 1,
+  totalSales: 27000,
+  averageOrderValue: 27000,
+  quantitySold: 3,
+  salesContribution: 1.7252396166134185
+}
+
+

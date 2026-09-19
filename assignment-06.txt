@@ -1,0 +1,205 @@
+db.orders.aggregate([
+  {$match:{status:"Delivered"}},
+
+  {$unwind:"$items"},
+
+  {$lookup:{
+    from:"products",
+    localField:"items.productId",
+    foreignField:"productId",
+    as:"product"
+  }},
+
+  {$unwind:"$product"},
+
+  {$group:{
+    _id:"$items.productId",
+
+    productName:{$first:"$product.name"},
+
+    quantitySold:{$sum:"$items.quantity"},
+
+    originalSales:{$sum:{
+      $multiply:[
+        "$items.quantity",
+        "$items.unitPrice"
+      ]
+    }},
+
+    discountAmount:{$sum:{
+      $multiply:[
+        "$items.quantity",
+        "$items.unitPrice",
+        {$divide:["$items.discount",100]}
+      ]
+    }},
+
+    cost:{$sum:{
+      $multiply:[
+        "$items.quantity",
+        "$product.costPrice"
+      ]
+    }}
+  }},
+
+  {$set:{
+    netSales:{
+      $subtract:[
+        "$originalSales",
+        "$discountAmount"
+      ]
+    }
+  }},
+
+  {$set:{
+    profitBeforeDiscount:{
+      $subtract:[
+        "$originalSales",
+        "$cost"
+      ]
+    },
+
+    profitAfterDiscount:{
+      $subtract:[
+        "$netSales",
+        "$cost"
+      ]
+    },
+
+    discountPercentage:{
+      $multiply:[
+        {
+          $divide:[
+            "$discountAmount",
+            "$originalSales"
+          ]
+        },
+        100
+      ]
+    }
+  }},
+
+  {$project:{
+    _id:0,
+    productId:"$_id",
+    productName:1,
+    quantitySold:1,
+    originalSales:1,
+    discountAmount:1,
+    netSales:1,
+    profitBeforeDiscount:1,
+    profitAfterDiscount:1,
+    discountPercentage:{$round:["$discountPercentage",2]}
+  }}
+])
+{
+  productName: 'Formal Shoes',
+  quantitySold: 6,
+  originalSales: 27000,
+  discountAmount: 2025,
+  netSales: 24975,
+  profitBeforeDiscount: 10200,
+  profitAfterDiscount: 8175,
+  productId: 'P202',
+  discountPercentage: 7.5
+}
+{
+  productName: 'Wireless Headphones',
+  quantitySold: 7,
+  originalSales: 84000,
+  discountAmount: 7800,
+  netSales: 76200,
+  profitBeforeDiscount: 31500,
+  profitAfterDiscount: 23700,
+  productId: 'P105',
+  discountPercentage: 9.29
+}
+{
+  productName: 'Smartphone X',
+  quantitySold: 3,
+  originalSales: 135000,
+  discountAmount: 6750,
+  netSales: 128250,
+  profitBeforeDiscount: 30000,
+  profitAfterDiscount: 23250,
+  productId: 'P103',
+  discountPercentage: 5
+}
+{
+  productName: 'Laptop Pro 15',
+  quantitySold: 6,
+  originalSales: 510000,
+  discountAmount: 25500,
+  netSales: 484500,
+  profitBeforeDiscount: 90000,
+  profitAfterDiscount: 64500,
+  productId: 'P101',
+  discountPercentage: 5
+}
+{
+  productName: 'Tablet Pro',
+  quantitySold: 6,
+  originalSales: 150000,
+  discountAmount: 15000,
+  netSales: 135000,
+  profitBeforeDiscount: 36000,
+  profitAfterDiscount: 21000,
+  productId: 'P205',
+  discountPercentage: 10
+}
+{
+  productName: 'Running Shoes',
+  quantitySold: 6,
+  originalSales: 51000,
+  discountAmount: 3825,
+  netSales: 47175,
+  profitBeforeDiscount: 21000,
+  profitAfterDiscount: 17175,
+  productId: 'P201',
+  discountPercentage: 7.5
+}
+{
+  productName: 'Smart Watch',
+  quantitySold: 5,
+  originalSales: 175000,
+  discountAmount: 13650,
+  netSales: 161350,
+  profitBeforeDiscount: 45000,
+  profitAfterDiscount: 31350,
+  productId: 'P203',
+  discountPercentage: 7.8
+}
+{
+  productName: 'Laptop Air 14',
+  quantitySold: 3,
+  originalSales: 195000,
+  discountAmount: 9750,
+  netSales: 185250,
+  profitBeforeDiscount: 39000,
+  profitAfterDiscount: 29250,
+  productId: 'P102',
+  discountPercentage: 5
+}
+{
+  productName: 'Smartphone Pro',
+  quantitySold: 4,
+  originalSales: 220000,
+  discountAmount: 11000,
+  netSales: 209000,
+  profitBeforeDiscount: 52000,
+  profitAfterDiscount: 41000,
+  productId: 'P104',
+  discountPercentage: 5
+}
+{
+  productName: 'Office Chair',
+  quantitySold: 1,
+  originalSales: 18000,
+  discountAmount: 900,
+  netSales: 17100,
+  profitBeforeDiscount: 6000,
+  profitAfterDiscount: 5100,
+  productId: 'P204',
+  discountPercentage: 5
+}
+

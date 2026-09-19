@@ -1,0 +1,2252 @@
+use("day-03")
+switched to db day-03
+db.orders.insertMany([
+  {
+    orderId: "ORD1001",
+    customerId: "C101",
+    orderDate: ISODate("2026-01-15"),
+    status: "Delivered",
+    paymentMethod: "Credit Card",
+    shippingCity: "Hyderabad",
+    items: [
+      {
+        productId: "P101",
+        quantity: 2,
+        unitPrice: 85000,
+        discount: 5
+      },
+      {
+        productId: "P205",
+        quantity: 1,
+        unitPrice: 25000,
+        discount: 10
+      }
+    ],
+    shippingCost: 500,
+    tax: 3060
+  },
+
+  {
+    orderId: "ORD1002",
+    customerId: "C102",
+    orderDate: ISODate("2026-01-20"),
+    status: "Delivered",
+    paymentMethod: "UPI",
+    shippingCity: "Bengaluru",
+    items: [
+      {
+        productId: "P103",
+        quantity: 2,
+        unitPrice: 45000,
+        discount: 5
+      },
+      {
+        productId: "P105",
+        quantity: 1,
+        unitPrice: 12000,
+        discount: 10
+      }
+    ],
+    shippingCost: 300,
+    tax: 4680
+  },
+
+  {
+    orderId: "ORD1003",
+    customerId: "C103",
+    orderDate: ISODate("2026-02-05"),
+    status: "Delivered",
+    paymentMethod: "Debit Card",
+    shippingCity: "Chennai",
+    items: [
+      {
+        productId: "P102",
+        quantity: 1,
+        unitPrice: 65000,
+        discount: 5
+      },
+      {
+        productId: "P201",
+        quantity: 2,
+        unitPrice: 8500,
+        discount: 10
+      }
+    ],
+    shippingCost: 400,
+    tax: 3870
+  },
+
+  {
+    orderId: "ORD1004",
+    customerId: "C104",
+    orderDate: ISODate("2026-02-18"),
+    status: "Delivered",
+    paymentMethod: "Credit Card",
+    shippingCity: "Mumbai",
+    items: [
+      {
+        productId: "P101",
+        quantity: 1,
+        unitPrice: 85000,
+        discount: 5
+      },
+      {
+        productId: "P203",
+        quantity: 1,
+        unitPrice: 35000,
+        discount: 8
+      }
+    ],
+    shippingCost: 600,
+    tax: 7200
+  },
+
+  {
+    orderId: "ORD1005",
+    customerId: "C105",
+    orderDate: ISODate("2026-03-10"),
+    status: "Delivered",
+    paymentMethod: "UPI",
+    shippingCity: "Delhi",
+    items: [
+      {
+        productId: "P201",
+        quantity: 2,
+        unitPrice: 8500,
+        discount: 5
+      },
+      {
+        productId: "P202",
+        quantity: 1,
+        unitPrice: 4500,
+        discount: 10
+      }
+    ],
+    shippingCost: 250,
+    tax: 1840
+  },
+
+  {
+    orderId: "ORD1006",
+    customerId: "C106",
+    orderDate: ISODate("2026-03-22"),
+    status: "Delivered",
+    paymentMethod: "Credit Card",
+    shippingCity: "Pune",
+    items: [
+      {
+        productId: "P104",
+        quantity: 2,
+        unitPrice: 55000,
+        discount: 5
+      },
+      {
+        productId: "P105",
+        quantity: 2,
+        unitPrice: 12000,
+        discount: 10
+      }
+    ],
+    shippingCost: 450,
+    tax: 7200
+  },
+
+  {
+    orderId: "ORD1007",
+    customerId: "C107",
+    orderDate: ISODate("2026-04-08"),
+    status: "Delivered",
+    paymentMethod: "UPI",
+    shippingCity: "Kochi",
+    items: [
+      {
+        productId: "P204",
+        quantity: 1,
+        unitPrice: 18000,
+        discount: 5
+      },
+      {
+        productId: "P202",
+        quantity: 2,
+        unitPrice: 4500,
+        discount: 10
+      }
+    ],
+    shippingCost: 350,
+    tax: 2700
+  },
+
+  {
+    orderId: "ORD1008",
+    customerId: "C108",
+    orderDate: ISODate("2026-04-25"),
+    status: "Delivered",
+    paymentMethod: "Credit Card",
+    shippingCity: "Ahmedabad",
+    items: [
+      {
+        productId: "P101",
+        quantity: 1,
+        unitPrice: 85000,
+        discount: 5
+      },
+      {
+        productId: "P105",
+        quantity: 1,
+        unitPrice: 12000,
+        discount: 5
+      }
+    ],
+    shippingCost: 500,
+    tax: 5100
+  },
+
+  {
+    orderId: "ORD1009",
+    customerId: "C109",
+    orderDate: ISODate("2026-05-12"),
+    status: "Delivered",
+    paymentMethod: "Debit Card",
+    shippingCity: "Jaipur",
+    items: [
+      {
+        productId: "P205",
+        quantity: 2,
+        unitPrice: 25000,
+        discount: 10
+      },
+      {
+        productId: "P201",
+        quantity: 1,
+        unitPrice: 8500,
+        discount: 5
+      }
+    ],
+    shippingCost: 300,
+    tax: 4500
+  },
+
+  {
+    orderId: "ORD1010",
+    customerId: "C110",
+    orderDate: ISODate("2026-05-28"),
+    status: "Delivered",
+    paymentMethod: "Credit Card",
+    shippingCity: "Bengaluru",
+    items: [
+      {
+        productId: "P102",
+        quantity: 2,
+        unitPrice: 65000,
+        discount: 5
+      },
+      {
+        productId: "P203",
+        quantity: 1,
+        unitPrice: 35000,
+        discount: 10
+      }
+    ],
+    shippingCost: 600,
+    tax: 10000
+  },
+
+  {
+    orderId: "ORD1011",
+    customerId: "C101",
+    orderDate: ISODate("2026-06-15"),
+    status: "Delivered",
+    paymentMethod: "UPI",
+    shippingCity: "Hyderabad",
+    items: [
+      {
+        productId: "P103",
+        quantity: 1,
+        unitPrice: 45000,
+        discount: 5
+      },
+      {
+        productId: "P205",
+        quantity: 2,
+        unitPrice: 25000,
+        discount: 10
+      }
+    ],
+    shippingCost: 400,
+    tax: 5850
+  },
+
+  {
+    orderId: "ORD1012",
+    customerId: "C102",
+    orderDate: ISODate("2026-06-30"),
+    status: "Cancelled",
+    paymentMethod: "UPI",
+    shippingCity: "Bengaluru",
+    items: [
+      {
+        productId: "P104",
+        quantity: 1,
+        unitPrice: 55000,
+        discount: 5
+      }
+    ],
+    shippingCost: 300,
+    tax: 2612
+  },
+
+  {
+    orderId: "ORD1013",
+    customerId: "C103",
+    orderDate: ISODate("2026-07-14"),
+    status: "Delivered",
+    paymentMethod: "Credit Card",
+    shippingCity: "Chennai",
+    items: [
+      {
+        productId: "P101",
+        quantity: 1,
+        unitPrice: 85000,
+        discount: 5
+      },
+      {
+        productId: "P203",
+        quantity: 2,
+        unitPrice: 35000,
+        discount: 8
+      }
+    ],
+    shippingCost: 550,
+    tax: 8500
+  },
+
+  {
+    orderId: "ORD1014",
+    customerId: "C104",
+    orderDate: ISODate("2026-07-26"),
+    status: "Delivered",
+    paymentMethod: "Debit Card",
+    shippingCity: "Mumbai",
+    items: [
+      {
+        productId: "P104",
+        quantity: 2,
+        unitPrice: 55000,
+        discount: 5
+      },
+      {
+        productId: "P105",
+        quantity: 1,
+        unitPrice: 12000,
+        discount: 10
+      }
+    ],
+    shippingCost: 500,
+    tax: 7500
+  },
+
+  {
+    orderId: "ORD1015",
+    customerId: "C105",
+    orderDate: ISODate("2026-08-05"),
+    status: "Delivered",
+    paymentMethod: "UPI",
+    shippingCity: "Delhi",
+    items: [
+      {
+        productId: "P202",
+        quantity: 3,
+        unitPrice: 4500,
+        discount: 5
+      },
+      {
+        productId: "P201",
+        quantity: 1,
+        unitPrice: 8500,
+        discount: 10
+      }
+    ],
+    shippingCost: 250,
+    tax: 1800
+  },
+
+  {
+    orderId: "ORD1016",
+    customerId: "C106",
+    orderDate: ISODate("2026-08-21"),
+    status: "Delivered",
+    paymentMethod: "Credit Card",
+    shippingCity: "Pune",
+    items: [
+      {
+        productId: "P101",
+        quantity: 1,
+        unitPrice: 85000,
+        discount: 5
+      },
+      {
+        productId: "P205",
+        quantity: 1,
+        unitPrice: 25000,
+        discount: 10
+      }
+    ],
+    shippingCost: 450,
+    tax: 4950
+  },
+
+  {
+    orderId: "ORD1017",
+    customerId: "C108",
+    orderDate: ISODate("2026-08-30"),
+    status: "Shipped",
+    paymentMethod: "Credit Card",
+    shippingCity: "Ahmedabad",
+    items: [
+      {
+        productId: "P102",
+        quantity: 1,
+        unitPrice: 65000,
+        discount: 5
+      }
+    ],
+    shippingCost: 350,
+    tax: 3087
+  },
+
+  {
+    orderId: "ORD1018",
+    customerId: "C110",
+    orderDate: ISODate("2026-09-05"),
+    status: "Delivered",
+    paymentMethod: "UPI",
+    shippingCity: "Bengaluru",
+    items: [
+      {
+        productId: "P203",
+        quantity: 1,
+        unitPrice: 35000,
+        discount: 5
+      },
+      {
+        productId: "P105",
+        quantity: 2,
+        unitPrice: 12000,
+        discount: 10
+      }
+    ],
+    shippingCost: 400,
+    tax: 3900
+  }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6aa00c67dcb12c3f9c5b43df'),
+    '1': ObjectId('6aa00c67dcb12c3f9c5b43e0'),
+    '2': ObjectId('6aa00c67dcb12c3f9c5b43e1'),
+    '3': ObjectId('6aa00c67dcb12c3f9c5b43e2'),
+    '4': ObjectId('6aa00c67dcb12c3f9c5b43e3'),
+    '5': ObjectId('6aa00c67dcb12c3f9c5b43e4'),
+    '6': ObjectId('6aa00c67dcb12c3f9c5b43e5'),
+    '7': ObjectId('6aa00c67dcb12c3f9c5b43e6'),
+    '8': ObjectId('6aa00c67dcb12c3f9c5b43e7'),
+    '9': ObjectId('6aa00c67dcb12c3f9c5b43e8'),
+    '10': ObjectId('6aa00c67dcb12c3f9c5b43e9'),
+    '11': ObjectId('6aa00c67dcb12c3f9c5b43ea'),
+    '12': ObjectId('6aa00c67dcb12c3f9c5b43eb'),
+    '13': ObjectId('6aa00c67dcb12c3f9c5b43ec'),
+    '14': ObjectId('6aa00c67dcb12c3f9c5b43ed'),
+    '15': ObjectId('6aa00c67dcb12c3f9c5b43ee'),
+    '16': ObjectId('6aa00c67dcb12c3f9c5b43ef'),
+    '17': ObjectId('6aa00c67dcb12c3f9c5b43f0')
+  }
+}
+db.orders.countDocuments()
+18
+db.orders.aggregate([
+  {
+    $match: {
+      status: "Delivered",
+      orderDate: {
+        $gte: ISODate("2026-01-01"),
+        $lt: ISODate("2027-01-01")
+      }
+    }
+  },
+
+  {
+    $set: {
+      orderQuantity: {
+        $sum: "$items.quantity"
+      }
+    }
+  }
+])
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43df'),
+  orderId: 'ORD1001',
+  customerId: 'C101',
+  orderDate: ISODate('2026-01-15T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Hyderabad',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 2,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P205',
+      quantity: 1,
+      unitPrice: 25000,
+      discount: 10
+    }
+  ],
+  shippingCost: 500,
+  tax: 3060,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e0'),
+  orderId: 'ORD1002',
+  customerId: 'C102',
+  orderDate: ISODate('2026-01-20T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Bengaluru',
+  items: [
+    {
+      productId: 'P103',
+      quantity: 2,
+      unitPrice: 45000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 1,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 300,
+  tax: 4680,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e1'),
+  orderId: 'ORD1003',
+  customerId: 'C103',
+  orderDate: ISODate('2026-02-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Chennai',
+  items: [
+    {
+      productId: 'P102',
+      quantity: 1,
+      unitPrice: 65000,
+      discount: 5
+    },
+    {
+      productId: 'P201',
+      quantity: 2,
+      unitPrice: 8500,
+      discount: 10
+    }
+  ],
+  shippingCost: 400,
+  tax: 3870,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e2'),
+  orderId: 'ORD1004',
+  customerId: 'C104',
+  orderDate: ISODate('2026-02-18T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Mumbai',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P203',
+      quantity: 1,
+      unitPrice: 35000,
+      discount: 8
+    }
+  ],
+  shippingCost: 600,
+  tax: 7200,
+  orderQuantity: 2
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e3'),
+  orderId: 'ORD1005',
+  customerId: 'C105',
+  orderDate: ISODate('2026-03-10T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Delhi',
+  items: [
+    {
+      productId: 'P201',
+      quantity: 2,
+      unitPrice: 8500,
+      discount: 5
+    },
+    {
+      productId: 'P202',
+      quantity: 1,
+      unitPrice: 4500,
+      discount: 10
+    }
+  ],
+  shippingCost: 250,
+  tax: 1840,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e4'),
+  orderId: 'ORD1006',
+  customerId: 'C106',
+  orderDate: ISODate('2026-03-22T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Pune',
+  items: [
+    {
+      productId: 'P104',
+      quantity: 2,
+      unitPrice: 55000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 2,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 450,
+  tax: 7200,
+  orderQuantity: 4
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e5'),
+  orderId: 'ORD1007',
+  customerId: 'C107',
+  orderDate: ISODate('2026-04-08T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Kochi',
+  items: [
+    {
+      productId: 'P204',
+      quantity: 1,
+      unitPrice: 18000,
+      discount: 5
+    },
+    {
+      productId: 'P202',
+      quantity: 2,
+      unitPrice: 4500,
+      discount: 10
+    }
+  ],
+  shippingCost: 350,
+  tax: 2700,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e6'),
+  orderId: 'ORD1008',
+  customerId: 'C108',
+  orderDate: ISODate('2026-04-25T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Ahmedabad',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 1,
+      unitPrice: 12000,
+      discount: 5
+    }
+  ],
+  shippingCost: 500,
+  tax: 5100,
+  orderQuantity: 2
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e7'),
+  orderId: 'ORD1009',
+  customerId: 'C109',
+  orderDate: ISODate('2026-05-12T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Jaipur',
+  items: [
+    {
+      productId: 'P205',
+      quantity: 2,
+      unitPrice: 25000,
+      discount: 10
+    },
+    {
+      productId: 'P201',
+      quantity: 1,
+      unitPrice: 8500,
+      discount: 5
+    }
+  ],
+  shippingCost: 300,
+  tax: 4500,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e8'),
+  orderId: 'ORD1010',
+  customerId: 'C110',
+  orderDate: ISODate('2026-05-28T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Bengaluru',
+  items: [
+    {
+      productId: 'P102',
+      quantity: 2,
+      unitPrice: 65000,
+      discount: 5
+    },
+    {
+      productId: 'P203',
+      quantity: 1,
+      unitPrice: 35000,
+      discount: 10
+    }
+  ],
+  shippingCost: 600,
+  tax: 10000,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e9'),
+  orderId: 'ORD1011',
+  customerId: 'C101',
+  orderDate: ISODate('2026-06-15T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Hyderabad',
+  items: [
+    {
+      productId: 'P103',
+      quantity: 1,
+      unitPrice: 45000,
+      discount: 5
+    },
+    {
+      productId: 'P205',
+      quantity: 2,
+      unitPrice: 25000,
+      discount: 10
+    }
+  ],
+  shippingCost: 400,
+  tax: 5850,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43eb'),
+  orderId: 'ORD1013',
+  customerId: 'C103',
+  orderDate: ISODate('2026-07-14T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Chennai',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P203',
+      quantity: 2,
+      unitPrice: 35000,
+      discount: 8
+    }
+  ],
+  shippingCost: 550,
+  tax: 8500,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43ec'),
+  orderId: 'ORD1014',
+  customerId: 'C104',
+  orderDate: ISODate('2026-07-26T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Mumbai',
+  items: [
+    {
+      productId: 'P104',
+      quantity: 2,
+      unitPrice: 55000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 1,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 500,
+  tax: 7500,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43ed'),
+  orderId: 'ORD1015',
+  customerId: 'C105',
+  orderDate: ISODate('2026-08-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Delhi',
+  items: [
+    {
+      productId: 'P202',
+      quantity: 3,
+      unitPrice: 4500,
+      discount: 5
+    },
+    {
+      productId: 'P201',
+      quantity: 1,
+      unitPrice: 8500,
+      discount: 10
+    }
+  ],
+  shippingCost: 250,
+  tax: 1800,
+  orderQuantity: 4
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43ee'),
+  orderId: 'ORD1016',
+  customerId: 'C106',
+  orderDate: ISODate('2026-08-21T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Pune',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P205',
+      quantity: 1,
+      unitPrice: 25000,
+      discount: 10
+    }
+  ],
+  shippingCost: 450,
+  tax: 4950,
+  orderQuantity: 2
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43f0'),
+  orderId: 'ORD1018',
+  customerId: 'C110',
+  orderDate: ISODate('2026-09-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Bengaluru',
+  items: [
+    {
+      productId: 'P203',
+      quantity: 1,
+      unitPrice: 35000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 2,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 400,
+  tax: 3900,
+  orderQuantity: 3
+}
+db.orders.aggregate([
+  {
+    $match: {
+      status: "Delivered",
+      orderDate: {
+        $gte: ISODate("2026-01-01"),
+        $lt: ISODate("2027-01-01")
+      }
+    }
+  },
+
+  {
+    $set: {
+      orderGrossSales: {
+        $sum: {
+          $map: {
+            input: "$items",
+            as: "item",
+            in: {
+              $multiply: [
+                "$$item.quantity",
+                "$$item.unitPrice",
+                {
+                  $subtract: [
+                    1,
+                    {
+                      $divide: ["$$item.discount", 100]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      orderQuantity: {
+        $sum: "$items.quantity"
+      }
+    }
+  }
+])
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43df'),
+  orderId: 'ORD1001',
+  customerId: 'C101',
+  orderDate: ISODate('2026-01-15T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Hyderabad',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 2,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P205',
+      quantity: 1,
+      unitPrice: 25000,
+      discount: 10
+    }
+  ],
+  shippingCost: 500,
+  tax: 3060,
+  orderGrossSales: 184000,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e0'),
+  orderId: 'ORD1002',
+  customerId: 'C102',
+  orderDate: ISODate('2026-01-20T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Bengaluru',
+  items: [
+    {
+      productId: 'P103',
+      quantity: 2,
+      unitPrice: 45000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 1,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 300,
+  tax: 4680,
+  orderGrossSales: 96300,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e1'),
+  orderId: 'ORD1003',
+  customerId: 'C103',
+  orderDate: ISODate('2026-02-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Chennai',
+  items: [
+    {
+      productId: 'P102',
+      quantity: 1,
+      unitPrice: 65000,
+      discount: 5
+    },
+    {
+      productId: 'P201',
+      quantity: 2,
+      unitPrice: 8500,
+      discount: 10
+    }
+  ],
+  shippingCost: 400,
+  tax: 3870,
+  orderGrossSales: 77050,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e2'),
+  orderId: 'ORD1004',
+  customerId: 'C104',
+  orderDate: ISODate('2026-02-18T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Mumbai',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P203',
+      quantity: 1,
+      unitPrice: 35000,
+      discount: 8
+    }
+  ],
+  shippingCost: 600,
+  tax: 7200,
+  orderGrossSales: 112950,
+  orderQuantity: 2
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e3'),
+  orderId: 'ORD1005',
+  customerId: 'C105',
+  orderDate: ISODate('2026-03-10T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Delhi',
+  items: [
+    {
+      productId: 'P201',
+      quantity: 2,
+      unitPrice: 8500,
+      discount: 5
+    },
+    {
+      productId: 'P202',
+      quantity: 1,
+      unitPrice: 4500,
+      discount: 10
+    }
+  ],
+  shippingCost: 250,
+  tax: 1840,
+  orderGrossSales: 20200,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e4'),
+  orderId: 'ORD1006',
+  customerId: 'C106',
+  orderDate: ISODate('2026-03-22T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Pune',
+  items: [
+    {
+      productId: 'P104',
+      quantity: 2,
+      unitPrice: 55000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 2,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 450,
+  tax: 7200,
+  orderGrossSales: 126100,
+  orderQuantity: 4
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e5'),
+  orderId: 'ORD1007',
+  customerId: 'C107',
+  orderDate: ISODate('2026-04-08T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Kochi',
+  items: [
+    {
+      productId: 'P204',
+      quantity: 1,
+      unitPrice: 18000,
+      discount: 5
+    },
+    {
+      productId: 'P202',
+      quantity: 2,
+      unitPrice: 4500,
+      discount: 10
+    }
+  ],
+  shippingCost: 350,
+  tax: 2700,
+  orderGrossSales: 25200,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e6'),
+  orderId: 'ORD1008',
+  customerId: 'C108',
+  orderDate: ISODate('2026-04-25T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Ahmedabad',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 1,
+      unitPrice: 12000,
+      discount: 5
+    }
+  ],
+  shippingCost: 500,
+  tax: 5100,
+  orderGrossSales: 92150,
+  orderQuantity: 2
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e7'),
+  orderId: 'ORD1009',
+  customerId: 'C109',
+  orderDate: ISODate('2026-05-12T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Jaipur',
+  items: [
+    {
+      productId: 'P205',
+      quantity: 2,
+      unitPrice: 25000,
+      discount: 10
+    },
+    {
+      productId: 'P201',
+      quantity: 1,
+      unitPrice: 8500,
+      discount: 5
+    }
+  ],
+  shippingCost: 300,
+  tax: 4500,
+  orderGrossSales: 53075,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e8'),
+  orderId: 'ORD1010',
+  customerId: 'C110',
+  orderDate: ISODate('2026-05-28T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Bengaluru',
+  items: [
+    {
+      productId: 'P102',
+      quantity: 2,
+      unitPrice: 65000,
+      discount: 5
+    },
+    {
+      productId: 'P203',
+      quantity: 1,
+      unitPrice: 35000,
+      discount: 10
+    }
+  ],
+  shippingCost: 600,
+  tax: 10000,
+  orderGrossSales: 155000,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43e9'),
+  orderId: 'ORD1011',
+  customerId: 'C101',
+  orderDate: ISODate('2026-06-15T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Hyderabad',
+  items: [
+    {
+      productId: 'P103',
+      quantity: 1,
+      unitPrice: 45000,
+      discount: 5
+    },
+    {
+      productId: 'P205',
+      quantity: 2,
+      unitPrice: 25000,
+      discount: 10
+    }
+  ],
+  shippingCost: 400,
+  tax: 5850,
+  orderGrossSales: 87750,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43eb'),
+  orderId: 'ORD1013',
+  customerId: 'C103',
+  orderDate: ISODate('2026-07-14T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Chennai',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P203',
+      quantity: 2,
+      unitPrice: 35000,
+      discount: 8
+    }
+  ],
+  shippingCost: 550,
+  tax: 8500,
+  orderGrossSales: 145150,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43ec'),
+  orderId: 'ORD1014',
+  customerId: 'C104',
+  orderDate: ISODate('2026-07-26T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Debit Card',
+  shippingCity: 'Mumbai',
+  items: [
+    {
+      productId: 'P104',
+      quantity: 2,
+      unitPrice: 55000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 1,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 500,
+  tax: 7500,
+  orderGrossSales: 115300,
+  orderQuantity: 3
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43ed'),
+  orderId: 'ORD1015',
+  customerId: 'C105',
+  orderDate: ISODate('2026-08-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Delhi',
+  items: [
+    {
+      productId: 'P202',
+      quantity: 3,
+      unitPrice: 4500,
+      discount: 5
+    },
+    {
+      productId: 'P201',
+      quantity: 1,
+      unitPrice: 8500,
+      discount: 10
+    }
+  ],
+  shippingCost: 250,
+  tax: 1800,
+  orderGrossSales: 20475,
+  orderQuantity: 4
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43ee'),
+  orderId: 'ORD1016',
+  customerId: 'C106',
+  orderDate: ISODate('2026-08-21T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'Credit Card',
+  shippingCity: 'Pune',
+  items: [
+    {
+      productId: 'P101',
+      quantity: 1,
+      unitPrice: 85000,
+      discount: 5
+    },
+    {
+      productId: 'P205',
+      quantity: 1,
+      unitPrice: 25000,
+      discount: 10
+    }
+  ],
+  shippingCost: 450,
+  tax: 4950,
+  orderGrossSales: 103250,
+  orderQuantity: 2
+}
+{
+  _id: ObjectId('6aa00c67dcb12c3f9c5b43f0'),
+  orderId: 'ORD1018',
+  customerId: 'C110',
+  orderDate: ISODate('2026-09-05T00:00:00.000Z'),
+  status: 'Delivered',
+  paymentMethod: 'UPI',
+  shippingCity: 'Bengaluru',
+  items: [
+    {
+      productId: 'P203',
+      quantity: 1,
+      unitPrice: 35000,
+      discount: 5
+    },
+    {
+      productId: 'P105',
+      quantity: 2,
+      unitPrice: 12000,
+      discount: 10
+    }
+  ],
+  shippingCost: 400,
+  tax: 3900,
+  orderGrossSales: 54850,
+  orderQuantity: 3
+}
+db.orders.aggregate([
+  {
+    $match: {
+      status: "Delivered",
+      orderDate: {
+        $gte: ISODate("2026-01-01"),
+        $lt: ISODate("2027-01-01")
+      }
+    }
+  },
+
+  {
+    $set: {
+      orderGrossSales: {
+        $sum: {
+          $map: {
+            input: "$items",
+            as: "item",
+            in: {
+              $multiply: [
+                "$$item.quantity",
+                "$$item.unitPrice",
+                {
+                  $subtract: [
+                    1,
+                    {
+                      $divide: ["$$item.discount", 100]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      orderQuantity: {
+        $sum: "$items.quantity"
+      }
+    }
+  },
+
+  {
+    $group: {
+      _id: {
+        $dateToString: {
+          format: "%Y-%m",
+          date: "$orderDate"
+        }
+      },
+
+      totalOrders: {
+        $sum: 1
+      },
+
+      totalQuantity: {
+        $sum: "$orderQuantity"
+      },
+
+      grossSales: {
+        $sum: "$orderGrossSales"
+      },
+
+      shippingRevenue: {
+        $sum: "$shippingCost"
+      },
+
+      tax: {
+        $sum: "$tax"
+      }
+    }
+  }
+])
+{
+  _id: '2026-08',
+  totalOrders: 2,
+  totalQuantity: 6,
+  grossSales: 123725,
+  shippingRevenue: 700,
+  tax: 6750
+}
+{
+  _id: '2026-04',
+  totalOrders: 2,
+  totalQuantity: 5,
+  grossSales: 117350,
+  shippingRevenue: 850,
+  tax: 7800
+}
+{
+  _id: '2026-02',
+  totalOrders: 2,
+  totalQuantity: 5,
+  grossSales: 190000,
+  shippingRevenue: 1000,
+  tax: 11070
+}
+{
+  _id: '2026-01',
+  totalOrders: 2,
+  totalQuantity: 6,
+  grossSales: 280300,
+  shippingRevenue: 800,
+  tax: 7740
+}
+{
+  _id: '2026-03',
+  totalOrders: 2,
+  totalQuantity: 7,
+  grossSales: 146300,
+  shippingRevenue: 700,
+  tax: 9040
+}
+{
+  _id: '2026-05',
+  totalOrders: 2,
+  totalQuantity: 6,
+  grossSales: 208075,
+  shippingRevenue: 900,
+  tax: 14500
+}
+{
+  _id: '2026-07',
+  totalOrders: 2,
+  totalQuantity: 6,
+  grossSales: 260450,
+  shippingRevenue: 1050,
+  tax: 16000
+}
+{
+  _id: '2026-06',
+  totalOrders: 1,
+  totalQuantity: 3,
+  grossSales: 87750,
+  shippingRevenue: 400,
+  tax: 5850
+}
+{
+  _id: '2026-09',
+  totalOrders: 1,
+  totalQuantity: 3,
+  grossSales: 54850,
+  shippingRevenue: 400,
+  tax: 3900
+}
+db.orders.aggregate([
+  {
+    $match: {
+      status: "Delivered",
+      orderDate: {
+        $gte: ISODate("2026-01-01"),
+        $lt: ISODate("2027-01-01")
+      }
+    }
+  },
+
+  {
+    $set: {
+      orderGrossSales: {
+        $sum: {
+          $map: {
+            input: "$items",
+            as: "item",
+            in: {
+              $multiply: [
+                "$$item.quantity",
+                "$$item.unitPrice",
+                {
+                  $subtract: [
+                    1,
+                    {
+                      $divide: ["$$item.discount", 100]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      orderQuantity: {
+        $sum: "$items.quantity"
+      }
+    }
+  },
+
+  {
+    $group: {
+      _id: {
+        $dateToString: {
+          format: "%Y-%m",
+          date: "$orderDate"
+        }
+      },
+
+      totalOrders: {
+        $sum: 1
+      },
+
+      totalQuantity: {
+        $sum: "$orderQuantity"
+      },
+
+      grossSales: {
+        $sum: "$orderGrossSales"
+      },
+
+      shippingRevenue: {
+        $sum: "$shippingCost"
+      },
+
+      tax: {
+        $sum: "$tax"
+      }
+    }
+  },
+
+  {
+    $project: {
+      _id: 0,
+
+      month: "$_id",
+
+      totalOrders: 1,
+
+      totalQuantity: 1,
+
+      grossSales: {
+        $round: ["$grossSales", 2]
+      },
+
+      shippingRevenue: {
+        $round: ["$shippingRevenue", 2]
+      },
+
+      tax: {
+        $round: ["$tax", 2]
+      },
+
+      averageOrderValue: {
+        $round: [
+          {
+            $divide: [
+              "$grossSales",
+              "$totalOrders"
+            ]
+          },
+          2
+        ]
+      }
+    }
+SyntaxError: Unexpected token, expected "," (107:5)
+
+  105 |         ]
+  106 |       }
+> 107 |     }
+      |      ^
+db.orders.aggregate([
+  {
+    $match: {
+      status: "Delivered",
+      orderDate: {
+        $gte: ISODate("2026-01-01"),
+        $lt: ISODate("2027-01-01")
+      }
+    }
+  },
+
+  {
+    $set: {
+      orderGrossSales: {
+        $sum: {
+          $map: {
+            input: "$items",
+            as: "item",
+            in: {
+              $multiply: [
+                "$$item.quantity",
+                "$$item.unitPrice",
+                {
+                  $subtract: [
+                    1,
+                    {
+                      $divide: ["$$item.discount", 100]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      orderQuantity: {
+        $sum: "$items.quantity"
+      }
+    }
+  },
+
+  {
+    $group: {
+      _id: {
+        $dateToString: {
+          format: "%Y-%m",
+          date: "$orderDate"
+        }
+      },
+
+      totalOrders: {
+        $sum: 1
+      },
+
+      totalQuantity: {
+        $sum: "$orderQuantity"
+      },
+
+      grossSales: {
+        $sum: "$orderGrossSales"
+      },
+
+      shippingRevenue: {
+        $sum: "$shippingCost"
+      },
+
+      tax: {
+        $sum: "$tax"
+      }
+    }
+  },
+
+  {
+    $project: {
+      _id: 0,
+
+      month: "$_id",
+
+      totalOrders: 1,
+
+      totalQuantity: 1,
+
+      grossSales: {
+        $round: ["$grossSales", 2]
+      },
+
+      shippingRevenue: {
+        $round: ["$shippingRevenue", 2]
+      },
+
+      tax: {
+        $round: ["$tax", 2]
+      },
+
+      averageOrderValue: {
+        $round: [
+          {
+            $divide: [
+              "$grossSales",
+              "$totalOrders"
+            ]
+          },
+          2
+        ]
+      }
+    }
+  }
+  }
+  ])
+SyntaxError: Unexpected token, expected "," (109:2)
+
+  107 |     }
+  108 |   }
+> 109 |   }
+      |   ^
+  110 |   ])
+db.orders.aggregate([
+  {
+    $match: {
+      status: "Delivered",
+      orderDate: {
+        $gte: ISODate("2026-01-01"),
+        $lt: ISODate("2027-01-01")
+      }
+    }
+  },
+
+  {
+    $set: {
+      orderGrossSales: {
+        $sum: {
+          $map: {
+            input: "$items",
+            as: "item",
+            in: {
+              $multiply: [
+                "$$item.quantity",
+                "$$item.unitPrice",
+                {
+                  $subtract: [
+                    1,
+                    {
+                      $divide: ["$$item.discount", 100]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      orderQuantity: {
+        $sum: "$items.quantity"
+      }
+    }
+  },
+
+  {
+    $group: {
+      _id: {
+        $dateToString: {
+          format: "%Y-%m",
+          date: "$orderDate"
+        }
+      },
+
+      totalOrders: {
+        $sum: 1
+      },
+
+      totalQuantity: {
+        $sum: "$orderQuantity"
+      },
+
+      grossSales: {
+        $sum: "$orderGrossSales"
+      },
+
+      shippingRevenue: {
+        $sum: "$shippingCost"
+      },
+
+      tax: {
+        $sum: "$tax"
+      }
+    }
+  },
+
+  {
+    $project: {
+      _id: 0,
+
+      month: "$_id",
+
+      totalOrders: 1,
+
+      totalQuantity: 1,
+
+      grossSales: {
+        $round: ["$grossSales", 2]
+      },
+
+      shippingRevenue: {
+        $round: ["$shippingRevenue", 2]
+      },
+
+      tax: {
+        $round: ["$tax", 2]
+      },
+
+      averageOrderValue: {
+        $round: [
+          {
+            $divide: [
+              "$grossSales",
+              "$totalOrders"
+            ]
+          },
+        ]
+      }
+    }
+  }
+  }
+  ])
+SyntaxError: Unexpected token, expected "," (108:2)
+
+  106 |     }
+  107 |   }
+> 108 |   }
+      |   ^
+  109 |   ])
+db.orders.aggregate([
+  {
+    $match: {
+      status: "Delivered",
+      orderDate: {
+        $gte: ISODate("2026-01-01"),
+        $lt: ISODate("2027-01-01")
+      }
+    }
+  },
+
+  {
+    $set: {
+      orderGrossSales: {
+        $sum: {
+          $map: {
+            input: "$items",
+            as: "item",
+            in: {
+              $multiply: [
+                "$$item.quantity",
+                "$$item.unitPrice",
+                {
+                  $subtract: [
+                    1,
+                    {
+                      $divide: ["$$item.discount", 100]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      orderQuantity: {
+        $sum: "$items.quantity"
+      }
+    }
+  },
+
+  {
+    $group: {
+      _id: {
+        $dateToString: {
+          format: "%Y-%m",
+          date: "$orderDate"
+        }
+      },
+
+      totalOrders: {
+        $sum: 1
+      },
+
+      totalQuantity: {
+        $sum: "$orderQuantity"
+      },
+
+      grossSales: {
+        $sum: "$orderGrossSales"
+      },
+
+      shippingRevenue: {
+        $sum: "$shippingCost"
+      },
+
+      tax: {
+        $sum: "$tax"
+      }
+    }
+  },
+
+  {
+    $project: {
+      _id: 0,
+
+      month: "$_id",
+
+      totalOrders: 1,
+
+      totalQuantity: 1,
+
+      grossSales: {
+        $round: ["$grossSales", 2]
+      },
+
+      shippingRevenue: {
+        $round: ["$shippingRevenue", 2]
+      },
+
+      tax: {
+        $round: ["$tax", 2]
+      },
+
+      averageOrderValue: {
+        $round: [
+          {
+            $divide: [
+              "$grossSales",
+              "$totalOrders"
+            ]
+          },
+          2
+        ]
+      }
+    }
+  }
+])
+{
+  totalOrders: 2,
+  totalQuantity: 6,
+  month: '2026-07',
+  grossSales: 260450,
+  shippingRevenue: 1050,
+  tax: 16000,
+  averageOrderValue: 130225
+}
+{
+  totalOrders: 2,
+  totalQuantity: 5,
+  month: '2026-02',
+  grossSales: 190000,
+  shippingRevenue: 1000,
+  tax: 11070,
+  averageOrderValue: 95000
+}
+{
+  totalOrders: 2,
+  totalQuantity: 6,
+  month: '2026-01',
+  grossSales: 280300,
+  shippingRevenue: 800,
+  tax: 7740,
+  averageOrderValue: 140150
+}
+{
+  totalOrders: 2,
+  totalQuantity: 7,
+  month: '2026-03',
+  grossSales: 146300,
+  shippingRevenue: 700,
+  tax: 9040,
+  averageOrderValue: 73150
+}
+{
+  totalOrders: 2,
+  totalQuantity: 6,
+  month: '2026-05',
+  grossSales: 208075,
+  shippingRevenue: 900,
+  tax: 14500,
+  averageOrderValue: 104037.5
+}
+{
+  totalOrders: 1,
+  totalQuantity: 3,
+  month: '2026-06',
+  grossSales: 87750,
+  shippingRevenue: 400,
+  tax: 5850,
+  averageOrderValue: 87750
+}
+{
+  totalOrders: 2,
+  totalQuantity: 5,
+  month: '2026-04',
+  grossSales: 117350,
+  shippingRevenue: 850,
+  tax: 7800,
+  averageOrderValue: 58675
+}
+{
+  totalOrders: 1,
+  totalQuantity: 3,
+  month: '2026-09',
+  grossSales: 54850,
+  shippingRevenue: 400,
+  tax: 3900,
+  averageOrderValue: 54850
+}
+{
+  totalOrders: 2,
+  totalQuantity: 6,
+  month: '2026-08',
+  grossSales: 123725,
+  shippingRevenue: 700,
+  tax: 6750,
+  averageOrderValue: 61862.5
+}
+db.orders.aggregate([
+  {
+    $match: {
+      status: "Delivered",
+      orderDate: {
+        $gte: ISODate("2026-01-01"),
+        $lt: ISODate("2027-01-01")
+      }
+    }
+  },
+
+  {
+    $set: {
+      orderGrossSales: {
+        $sum: {
+          $map: {
+            input: "$items",
+            as: "item",
+            in: {
+              $multiply: [
+                "$$item.quantity",
+                "$$item.unitPrice",
+                {
+                  $subtract: [
+                    1,
+                    {
+                      $divide: [
+                        "$$item.discount",
+                        100
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      orderQuantity: {
+        $sum: "$items.quantity"
+      }
+    }
+  },
+
+  {
+    $group: {
+      _id: {
+        $dateToString: {
+          format: "%Y-%m",
+          date: "$orderDate"
+        }
+      },
+
+      totalOrders: {
+        $sum: 1
+      },
+
+      totalQuantity: {
+        $sum: "$orderQuantity"
+      },
+
+      grossSales: {
+        $sum: "$orderGrossSales"
+      },
+
+      shippingRevenue: {
+        $sum: "$shippingCost"
+      },
+
+      tax: {
+        $sum: "$tax"
+      }
+    }
+  },
+
+  {
+    $project: {
+      _id: 0,
+      month: "$_id",
+      totalOrders: 1,
+      totalQuantity: 1,
+
+      grossSales: {
+        $round: ["$grossSales", 2]
+      },
+
+      shippingRevenue: {
+        $round: ["$shippingRevenue", 2]
+      },
+
+      tax: {
+        $round: ["$tax", 2]
+      },
+
+      averageOrderValue: {
+        $round: [
+          {
+            $divide: [
+              "$grossSales",
+              "$totalOrders"
+            ]
+          },
+          2
+        ]
+      }
+    }
+  },
+
+  {
+    $sort: {
+      month: 1
+    }
+  }
+])
+{
+  totalOrders: 2,
+  totalQuantity: 6,
+  month: '2026-01',
+  grossSales: 280300,
+  shippingRevenue: 800,
+  tax: 7740,
+  averageOrderValue: 140150
+}
+{
+  totalOrders: 2,
+  totalQuantity: 5,
+  month: '2026-02',
+  grossSales: 190000,
+  shippingRevenue: 1000,
+  tax: 11070,
+  averageOrderValue: 95000
+}
+{
+  totalOrders: 2,
+  totalQuantity: 7,
+  month: '2026-03',
+  grossSales: 146300,
+  shippingRevenue: 700,
+  tax: 9040,
+  averageOrderValue: 73150
+}
+{
+  totalOrders: 2,
+  totalQuantity: 5,
+  month: '2026-04',
+  grossSales: 117350,
+  shippingRevenue: 850,
+  tax: 7800,
+  averageOrderValue: 58675
+}
+{
+  totalOrders: 2,
+  totalQuantity: 6,
+  month: '2026-05',
+  grossSales: 208075,
+  shippingRevenue: 900,
+  tax: 14500,
+  averageOrderValue: 104037.5
+}
+{
+  totalOrders: 1,
+  totalQuantity: 3,
+  month: '2026-06',
+  grossSales: 87750,
+  shippingRevenue: 400,
+  tax: 5850,
+  averageOrderValue: 87750
+}
+{
+  totalOrders: 2,
+  totalQuantity: 6,
+  month: '2026-07',
+  grossSales: 260450,
+  shippingRevenue: 1050,
+  tax: 16000,
+  averageOrderValue: 130225
+}
+{
+  totalOrders: 2,
+  totalQuantity: 6,
+  month: '2026-08',
+  grossSales: 123725,
+  shippingRevenue: 700,
+  tax: 6750,
+  averageOrderValue: 61862.5
+}
+{
+  totalOrders: 1,
+  totalQuantity: 3,
+  month: '2026-09',
+  grossSales: 54850,
+  shippingRevenue: 400,
+  tax: 3900,
+  averageOrderValue: 54850
+}
